@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
+
 namespace HR_Api
 {
     public class Program
@@ -6,12 +9,30 @@ namespace HR_Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            //   var builder = services.AddDbContext<BloggingContext>(options =>
+            //options.UseSqlServer(Configuration.GetConnectionString("HrConnection")));
+
+        
+
             // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+           
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            // Add API Versioning to the service container to your project ==>
+            builder.Services.AddApiVersioning(opt =>
+            {
+                opt.DefaultApiVersion = new ApiVersion(1, 0);
+                opt.AssumeDefaultVersionWhenUnspecified = true;
+                opt.ReportApiVersions = true;
+                opt.ApiVersionReader = ApiVersionReader.Combine(new UrlSegmentApiVersionReader(),
+                                                                new HeaderApiVersionReader("x-api-version"),
+                                                                new MediaTypeApiVersionReader("x-api-version"));
+            });
+            // <==
+
 
             var app = builder.Build();
 
@@ -21,6 +42,7 @@ namespace HR_Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            //app.UseApiVersioning();
 
             app.UseHttpsRedirection();
 
