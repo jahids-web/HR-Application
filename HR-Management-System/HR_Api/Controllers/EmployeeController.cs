@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DLL.EntityModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR_Api.Controllers
@@ -38,4 +39,6 @@ namespace HR_Api.Controllers
             return Ok("delete + department + data");
         }
     }
+
 }
+
