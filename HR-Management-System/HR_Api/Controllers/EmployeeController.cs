@@ -1,4 +1,5 @@
-﻿using DLL.EntityModels;
+﻿using DLL.EntityModel;
+using DLL.EntityModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,3 +43,33 @@ namespace HR_Api.Controllers
 
 }
 
+public static class EmployeeController
+{
+    private static List<Employee> AllEmployee { get; set; } = new List<Employee>();
+
+    public static Employee InsertEmployee (Employee employee)
+    {
+        AllEmployee.Add(employee);
+        return employee;
+    }
+
+    public static Employee GetAEmployee(string role)
+    {
+        return AllEmployee.FirstOrDefault(x => x.Role == role);
+    }
+
+    public static Employee UpdateEmployee(string role, Employee employee)
+    {
+        foreach (var aEmployee in AllEmployee)
+        {
+            if (role == aEmployee.Role)
+            {
+                aEmployee.Name = employee.Name;
+            }
+           
+        }
+        return employee;
+    }
+
+    public static Employee DeleteDepartment(string role)
+}
