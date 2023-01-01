@@ -16,28 +16,28 @@ namespace HR_Api.Controllers
             return Ok(EmployeeStatic.GetAllEmployee());
         }
 
-        [HttpGet("{department}")]
-        public IActionResult GetA(string department)
+        [HttpGet("{role}")]
+        public IActionResult GetA(string role)
         {
-            return Ok("Get One + designation + data");
+            return Ok(EmployeeStatic.GetAEmployee);
         }
 
         [HttpPost]
-        public IActionResult Insert()
+        public IActionResult Insert(Employee employee)
         {
-            return Ok("insert + department + data");
+            return Ok(EmployeeStatic.InsertEmployee(employee));
         }
 
-        [HttpPut("{department}")]
-        public IActionResult Update(string department)
+        [HttpPut("{role}")]
+        public IActionResult Update(string role, Employee employee)
         {
-            return Ok("Update + department + data ");
+            return Ok(EmployeeStatic.UpdateEmployee (role ,employee));
         }
 
-        [HttpDelete("{department}")]
-        public IActionResult Delete(string department)
+        [HttpDelete("{role}")]
+        public IActionResult Delete(string role)
         {
-            return Ok("delete + department + data");
+            return Ok(EmployeeStatic.DeleteDepartment(role));
         }
     }
 
