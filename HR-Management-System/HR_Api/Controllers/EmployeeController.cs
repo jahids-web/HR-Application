@@ -72,4 +72,9 @@ public static class EmployeeController
     }
 
     public static Employee DeleteDepartment(string role)
+    {
+        var employee = AllEmployee.FirstOrDefault(x =>x.Role == role);
+        AllEmployee = AllEmployee.Where(x => x.Role != employee.Role).ToList();
+        return employee;
+    }
 }
