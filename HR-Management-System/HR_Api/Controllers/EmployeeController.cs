@@ -13,7 +13,7 @@ namespace HR_Api.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok("get all data");
+            return Ok(EmployeeStatic.GetAllEmployee());
         }
 
         [HttpGet("{department}")]
@@ -41,40 +41,46 @@ namespace HR_Api.Controllers
         }
     }
 
-}
-
-public static class EmployeeController
-{
-    private static List<Employee> AllEmployee { get; set; } = new List<Employee>();
-
-    public static Employee InsertEmployee (Employee employee)
+    public static class EmployeeStatic
     {
-        AllEmployee.Add(employee);
-        return employee;
-    }
+        private static List<Employee> AllEmployee { get; set; } = new List<Employee>();
 
-    public static Employee GetAEmployee(string role)
-    {
-        return AllEmployee.FirstOrDefault(x => x.Role == role);
-    }
-
-    public static Employee UpdateEmployee(string role, Employee employee)
-    {
-        foreach (var aEmployee in AllEmployee)
+        public static Employee InsertEmployee(Employee employee)
         {
-            if (role == aEmployee.Role)
-            {
-                aEmployee.Name = employee.Name;
-            }
-           
+            AllEmployee.Add(employee);
+            return employee;
         }
-        return employee;
+
+        public static List<Employee> GetAllEmployee()
+        {
+            return AllEmployee;
+        }
+
+        public static Employee GetAEmployee(string role)
+        {
+            return AllEmployee.FirstOrDefault(x => x.Role == role);
+        }
+
+        public static Employee UpdateEmployee(string role, Employee employee)
+        {
+            foreach (var aEmployee in AllEmployee)
+            {
+                if (role == aEmployee.Role)
+                {
+                    aEmployee.Name = employee.Name;
+                }
+
+            }
+            return employee;
+        }
+
+        public static Employee DeleteDepartment(string role)
+        {
+            var employee = AllEmployee.FirstOrDefault(x => x.Role == role);
+            AllEmployee = AllEmployee.Where(x => x.Role != employee.Role).ToList();
+            return employee;
+        }
     }
 
-    public static Employee DeleteDepartment(string role)
-    {
-        var employee = AllEmployee.FirstOrDefault(x =>x.Role == role);
-        AllEmployee = AllEmployee.Where(x => x.Role != employee.Role).ToList();
-        return employee;
-    }
 }
+
