@@ -20,8 +20,8 @@ namespace DLL.EntityModel
         [Column(TypeName = "nvarchar(30)")]
         public string? Designation { get; set; }
 
-        [Column(TypeName = "nvarchar(11)")]
-        public int MobileNo { get; set; }
+        [Column(TypeName = "nvarchar(16)")]
+        public string? MobileNo { get; set; }
 
         public DateTime Present { get; set; } = DateTime.Now;
         public DateTime LeaveReport { get; set; } = DateTime.Now;
