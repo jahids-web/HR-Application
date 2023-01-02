@@ -15,7 +15,7 @@ namespace HR_Api.Controllers
             return Ok(EmployeeStatic.GetAllEmployee());
         }
 
-        [HttpGet("{employeId}")]
+        [HttpGet("{employeeId}")]
         public IActionResult GetA(string employeId)
         {
             return Ok(EmployeeStatic.GetAEmployee);
@@ -27,16 +27,16 @@ namespace HR_Api.Controllers
             return Ok(EmployeeStatic.InsertEmployee(employee));
         }
 
-        [HttpPut("{employeId}")]
-        public IActionResult Update(string employeId, Employee employee)
+        [HttpPut("{employeeId}")]
+        public IActionResult Update(int employeeId, Employee employee)
         {
-            return Ok(EmployeeStatic.UpdateEmployee(employeId, employee));
+            return Ok(EmployeeStatic.UpdateEmployee(employeeId, employee));
         }
 
-        [HttpDelete("{employeId}")]
-        public IActionResult Delete(string employeId)
+        [HttpDelete("{employeeId}")]
+        public IActionResult Delete(int employeeId)
         {
-            return Ok(EmployeeStatic.DeleteDepartment(employeId));
+            return Ok(EmployeeStatic.DeleteDepartment(employeeId));
         }
     }
 
