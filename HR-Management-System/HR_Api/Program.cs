@@ -1,5 +1,10 @@
+using DLL.DataContext;
+using FluentAssertions.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+using System.Security.Cryptography.X509Certificates;
 
 namespace HR_Api
 {
@@ -9,10 +14,9 @@ namespace HR_Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            //   var builder = services.AddDbContext<BloggingContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("HrConnection")));
+            //Connection Strings
+            public IConfiguration configuration { Get; }
 
-        
 
             // Add services to the container.
 
@@ -42,7 +46,7 @@ namespace HR_Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            //app.UseApiVersioning();
+         
 
             app.UseHttpsRedirection();
 
