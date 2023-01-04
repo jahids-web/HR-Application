@@ -4,10 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HR_Api.Controllers
 {
-    [ApiVersion("1.0")]
-    [ApiController]
-    [Route("api/v1{version:apiVersion}/[controller]")]
-    public class HrAdminController : ControllerBase
+    
+    public class HrAdminController : MainApiController
     {
         [HttpGet]
         public IActionResult GetAll()
