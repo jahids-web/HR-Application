@@ -10,13 +10,11 @@ namespace HR_Api
 {
     public class Program
     {
+        //Connection Strings
+        public IConfiguration configuration { get; }
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-            //Connection Strings
-            public IConfiguration configuration { Get; }
-
 
             // Add services to the container.
 
