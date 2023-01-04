@@ -1,10 +1,5 @@
-using DLL.DataContext;
-using FluentAssertions.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.EntityFrameworkCore;
-using System.Configuration;
-using System.Security.Cryptography.X509Certificates;
 
 namespace HR_Api
 {
