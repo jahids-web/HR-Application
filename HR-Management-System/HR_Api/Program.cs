@@ -1,12 +1,21 @@
+using DLL;
+using FluentAssertions.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using System.Configuration;
+
 
 namespace HR_Api
 {
     public class Program
     {
         //Connection Strings
-        public IConfiguration configuration { get; }
+        public IConfiguration Configuration { get; }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            DllDependency.AllDependency(services, Configuration);
+        }
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -29,7 +38,6 @@ namespace HR_Api
                                                                 new MediaTypeApiVersionReader("x-api-version"));
             });
             // <==
-
 
             var app = builder.Build();
 
