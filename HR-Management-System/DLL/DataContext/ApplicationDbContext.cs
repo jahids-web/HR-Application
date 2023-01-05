@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DLL.EntityModel;
+using DLL.EntityModels;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace DLL.DataContext
@@ -9,5 +11,7 @@ namespace DLL.DataContext
         {
             
         }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Employee> Employee { get; set; }
     }
 }
