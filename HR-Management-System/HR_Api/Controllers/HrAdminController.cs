@@ -1,4 +1,5 @@
 ﻿using DLL.EntityModel;
+using DLL.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,75 +8,41 @@ namespace HR_Api.Controllers
     
     public class HrAdminController : MainApiController
     {
-        [HttpGet]
-        public IActionResult GetAll()
+        private readonly IHrAdminRepository _hrAdminRepository;
+
+        public HrAdminController(IHrAdminRepository hrAdminRepository)
         {
-            return Ok(EmployeeStatic.GetAllEmployee());
+            _hrAdminRepository = hrAdminRepository;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await _hrAdminRepository.GetAllAsync());
         }
 
         [HttpGet("{employeeId}")]
-        public IActionResult GetA(string employeId)
+        public async Task<IActionResult> GetA(int employeeId)
         {
-            return Ok(EmployeeStatic.GetAEmployee);
+            return Ok(await _hrAdminRepository.GetAAsync(employeeId));
         }
 
         [HttpPost]
-        public IActionResult Insert(Employee employee)
+        public async Task<IActionResult> Insert(Employee employee)
         {
-            return Ok(EmployeeStatic.InsertEmployee(employee));
+            return Ok(await _hrAdminRepository.InsertAsync(employee));
         }
 
         [HttpPut("{employeeId}")]
-        public IActionResult Update(int employeeId, Employee employee)
+        public async Task<IActionResult> Update(int employeeId, Employee employee)
         {
-            return Ok(EmployeeStatic.UpdateEmployee(employeeId, employee));
+            return Ok(await _hrAdminRepository.UpdateAsync(employeeId,employee));
         }
 
         [HttpDelete("{employeeId}")]
-        public IActionResult Delete(int employeeId)
+        public async Task<IActionResult> Delete(int employeeId)
         {
-            return Ok(EmployeeStatic.DeleteDepartment(employeeId));
-        }
-    }
-
-    public static class EmployeeStatic
-    {
-        private static List<Employee> AllEmployee { get; set; } = new List<Employee>();
-
-        public static Employee InsertEmployee(Employee employee)
-        {
-            AllEmployee.Add(employee);
-            return employee;
-        }
-
-        public static List<Employee> GetAllEmployee()
-        {
-            return AllEmployee;
-        }
-
-        public static Employee GetAEmployee(int employeeId)
-        {
-            return AllEmployee.FirstOrDefault(x => x.EmployeeId == employeeId);
-        }
-
-        public static Employee UpdateEmployee(int employeeId, Employee employee)
-        {
-            foreach (var aEmployee in AllEmployee)
-            {
-                if (employeeId == aEmployee.EmployeeId)
-                {
-                    aEmployee.Name = employee.Name;
-                }
-
-            }
-            return employee;
-        }
-
-        public static Employee DeleteDepartment(int employeeId)
-        {
-            var employee = AllEmployee.FirstOrDefault(x => x.EmployeeId == employeeId);
-            AllEmployee = AllEmployee.Where(x => x.EmployeeId != employee.EmployeeId).ToList();
-            return employee;
+            return Ok(await _hrAdminRepository.DeleteAsync(employeeId));
         }
     }
 }

@@ -1,4 +1,7 @@
+using DLL;
 using DLL.DataContext;
+using DLL.Repositories;
+using FluentAssertions.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
@@ -12,16 +15,15 @@ namespace HR_Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            //DataBase Connection Strings
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("HrConnection"));
             });
+            //
 
+            // Add services to the container.
             builder.Services.AddControllers();
-          
-            builder.Services.AddControllers();
-           
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -35,7 +37,10 @@ namespace HR_Api
                                                                 new HeaderApiVersionReader("x-api-version"),
                                                                 new MediaTypeApiVersionReader("x-api-version"));
             });
-            // <==
+            // 
+
+            //DllDependency
+            builder.Services.AllDependency();
 
             var app = builder.Build();
 
