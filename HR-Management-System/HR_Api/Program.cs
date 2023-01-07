@@ -1,27 +1,25 @@
-using DLL;
-using FluentAssertions.Common;
+using DLL.DataContext;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
-using System.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace HR_Api
 {
     public class Program
     {
-        //Connection Strings
-        public IConfiguration Configuration { get; }
-
-        public void ConfigureServices(IServiceCollection services)
-        {
-            DllDependency.AllDependency(services, Configuration);
-        }
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("HrConnection"));
+            });
 
+            builder.Services.AddControllers();
+          
             builder.Services.AddControllers();
            
             builder.Services.AddEndpointsApiExplorer();
