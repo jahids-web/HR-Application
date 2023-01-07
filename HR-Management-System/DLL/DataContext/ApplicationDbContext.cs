@@ -1,13 +1,14 @@
 ﻿using DLL.EntityModel;
 using DLL.EntityModels;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.Options;
+using System.Configuration;
 
 namespace DLL.DataContext
 {
     public class ApplicationDbContext : DbContext
     {
-        protected ApplicationDbContext(DbContextOptions options):base(options)
+        public ApplicationDbContext(DbContextOptions <ApplicationDbContext> options):base(options)
         {
             
         }
