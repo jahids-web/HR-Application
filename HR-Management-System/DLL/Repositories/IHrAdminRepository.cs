@@ -1,4 +1,5 @@
-﻿using DLL.DataContext;using DLL.EntityModel;
+﻿using DLL.DataContext;
+using DLL.EntityModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,8 +16,6 @@ namespace DLL.Repositories
         Task<Employee> GetAAsync(int employeeId);
         Task<Employee> UpdateAsync(int employeeId, Employee employee);
         Task<Employee> DeleteAsync(int employeeId);
-
-
     }
 
     public class HrAdminRepository : IHrAdminRepository
@@ -63,7 +62,7 @@ namespace DLL.Repositories
             findEmployee.Designation = employee.Designation;
             findEmployee.Present = employee.Present;
             findEmployee.LeaveReport = employee.LeaveReport;
-            
+            _context.Employee.Update(findEmployee);
             await _context.SaveChangesAsync();
             return employee;
         }
