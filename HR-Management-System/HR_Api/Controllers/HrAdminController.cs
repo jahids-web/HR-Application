@@ -21,10 +21,10 @@ namespace HR_Api.Controllers
             return Ok(await _hrAdminRepository.GetAllAsync());
         }
 
-        [HttpGet("{employeeId}")]
-        public async Task<IActionResult> GetA(int employeeId)
+        [HttpGet("{designation}")]
+        public async Task<IActionResult> GetA(string designation)
         {
-            return Ok(await _hrAdminRepository.GetAAsync(employeeId));
+            return Ok(await _hrAdminRepository.GetAAsync(designation));
         }
 
         [HttpPost]
@@ -33,16 +33,16 @@ namespace HR_Api.Controllers
             return Ok(await _hrAdminRepository.InsertAsync(employee));
         }
 
-        [HttpPut("{employeeId}")]
-        public async Task<IActionResult> Update(int employeeId, Employee employee)
+        [HttpPut("{designation}")]
+        public async Task<IActionResult> Update(string designation, Employee employee)
         {
-            return Ok(await _hrAdminRepository.UpdateAsync(employeeId,employee));
+            return Ok(await _hrAdminRepository.UpdateAsync(designation, employee));
         }
 
-        [HttpDelete("{employeeId}")]
-        public async Task<IActionResult> Delete(int employeeId)
+        [HttpDelete("{designation}")]
+        public async Task<IActionResult> Delete(string designation)
         {
-            return Ok(await _hrAdminRepository.DeleteAsync(employeeId));
+            return Ok(await _hrAdminRepository.DeleteAsync(designation));
         }
     }
 }
