@@ -2,6 +2,8 @@
 using DLL.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace HR_Api.Controllers
 {
@@ -18,13 +20,13 @@ namespace HR_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _hrAdminRepository.GetAllAsync());
+            return Ok( await _hrAdminRepository.GetAllAsync());
         }
 
-        [HttpGet("{designation}")]
-        public async Task<IActionResult> GetA(string designation)
+        [HttpGet("{employeeId}")]
+        public async Task<IActionResult> GetA(int employeeId)
         {
-            return Ok(await _hrAdminRepository.GetAAsync(designation));
+            return Ok(await _hrAdminRepository.GetAAsync(employeeId));
         }
 
         [HttpPost]
@@ -33,16 +35,16 @@ namespace HR_Api.Controllers
             return Ok(await _hrAdminRepository.InsertAsync(employee));
         }
 
-        [HttpPut("{designation}")]
-        public async Task<IActionResult> Update(string designation, Employee employee)
+        [HttpPut("{employeeId}")]
+        public async Task<IActionResult> Update(int employeeId, Employee employee)
         {
-            return Ok(await _hrAdminRepository.UpdateAsync(designation, employee));
+            return Ok(await _hrAdminRepository.UpdateAsync(employeeId, employee));
         }
 
-        [HttpDelete("{designation}")]
-        public async Task<IActionResult> Delete(string designation)
+        [HttpDelete("{employeeId}")]
+        public async Task<IActionResult> Delete(int employeeId)
         {
-            return Ok(await _hrAdminRepository.DeleteAsync(designation));
+            return Ok(await _hrAdminRepository.DeleteAsync(employeeId));
         }
     }
 }
