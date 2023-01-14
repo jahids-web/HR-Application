@@ -11,11 +11,11 @@ namespace DLL.Repositories
 {
     public interface IHrAdminRepository
     {
-        Task<Employee> InsertAsync(Employee designation);
+        Task<Employee> InsertAsync(Employee employeeId);
         Task<List<Employee>> GetAllAsync();
-        Task<Employee> GetAAsync(string designation);
-        Task<Employee> UpdateAsync(string designation, Employee employee);
-        Task<Employee> DeleteAsync(string designation);
+        Task<Employee> GetAAsync(int employeeId);
+        Task<Employee> UpdateAsync(int employeeId, Employee employee);
+        Task<Employee> DeleteAsync(int employeeId);
     }
 
     public class HrAdminRepository : IHrAdminRepository
@@ -39,23 +39,23 @@ namespace DLL.Repositories
             return employee;
         }
 
-        public async Task<Employee> DeleteAsync(string designation)
+        public async Task<Employee> DeleteAsync(int employeeId)
         {
-            var employee = await _context.Employee.FirstOrDefaultAsync(a => a.Designation == designation);
+            var employee = await _context.Employee.FirstOrDefaultAsync(a => a.EmployeeId == employeeId);
             _context.Employee.Remove(employee);
             await _context.SaveChangesAsync();
             return employee;
         }
 
-        public async Task<Employee> GetAAsync(string designation)
+        public async Task<Employee> GetAAsync(int employeeId)
         {
-            var employee = await _context.Employee.FirstOrDefaultAsync(a => a.Designation == designation);
+            var employee = await _context.Employee.FirstOrDefaultAsync(a => a.EmployeeId == employeeId);
             return employee;
         }
 
-        public async Task<Employee> UpdateAsync(string designation, Employee employee)
+        public async Task<Employee> UpdateAsync(int employeeId, Employee employee)
         {
-            var findEmployee = await _context.Employee.FirstOrDefaultAsync(a => a.Designation == designation);
+            var findEmployee = await _context.Employee.FirstOrDefaultAsync(a => a.EmployeeId == employeeId);
 
             findEmployee.Name = employee.Name;
             findEmployee.Email = employee.Email;
