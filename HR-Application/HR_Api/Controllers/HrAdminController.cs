@@ -29,6 +29,7 @@ namespace HR_Api.Controllers
             return Ok(await _hrAdminRepository.GetAAsync(employeeId));
         }
 
+
         [HttpPost]
         public async Task<IActionResult> Insert(Employee employee)
         {
