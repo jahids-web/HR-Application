@@ -20,16 +20,16 @@ namespace DLL.Repositories
 
     public class HrAdminRepository : IHrAdminRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IUnitofWork _context;
 
-        public HrAdminRepository(ApplicationDbContext context)
+        public HrAdminRepository(IUnitofWork context)
         {
             _context = context;  
         }
 
         public async Task<List<Employee>> GetAllAsync()
         {
-            return await _context.Employee.ToListAsync();
+            return await _context.Employee.AsQueryable().ToListAsync();
         }
 
         public async Task<Employee> InsertAsync(Employee employee)

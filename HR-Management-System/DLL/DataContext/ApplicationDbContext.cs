@@ -6,13 +6,24 @@ using System.Configuration;
 
 namespace DLL.DataContext
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext, IUnitofWork
     {
-        public ApplicationDbContext(DbContextOptions <ApplicationDbContext> options):base(options)
+        public ApplicationDbContext(DbContextOptions options):base(options)
         {
             
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        }
         public DbSet<Department> Department { get; set; }
         public DbSet<Employee> Employee { get; set; }
+        public Task SaveChangesAsync()
+        {
+            return this.SaveChangesAsync();
+        }
+
     }
 }
