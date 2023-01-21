@@ -32,6 +32,15 @@ namespace HR_Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HR_Api", Version = "v1" });
             });
+
+            // Add API Versioning to as service to your project 
+            services.AddApiVersioning(config =>
+            {
+                // Specify the default API Version as 1.0
+                config.DefaultApiVersion = new ApiVersion(1, 0);
+                // If the client hasn't specified the API version in the request, use the default API version number 
+                config.AssumeDefaultVersionWhenUnspecified = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
