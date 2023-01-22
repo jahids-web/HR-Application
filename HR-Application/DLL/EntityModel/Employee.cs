@@ -23,10 +23,21 @@ namespace DLL.EntityModel
         public string Designation { get; set; }
 
         [Column(TypeName = "nvarchar(11)")]
-        public string MobileNo { get; set; }
+        public string Status { get; set; }
 
-        public DateTime Present = DateTime.Now;
-        public DateTime CheckOut = DateTime.Now;
+        [Column(TypeName = "nvarchar(11)")]
+        public int MobileNo { get; set; }
+
+        [Column(TypeName = "nvarchar(11)")]
+        public int WorkHour { get; set; }
+
+        [Column(TypeName = "nvarchar(11)")]
+        public int EarlyLeft { get; set; }
+
+        [Column(TypeName = "nvarchar(11)")]
+        public int OverTime { get; set; }
+
+     
 
     }
 }
