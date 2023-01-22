@@ -1,18 +1,11 @@
-using DLL.DataContext;
+using DLL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HR_Api
 {
@@ -43,8 +36,8 @@ namespace HR_Api
                 // If the client hasn't specified the API version in the request, use the default API version number 
                 config.AssumeDefaultVersionWhenUnspecified = true;
             });
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("HrDatabase")));
+
+            DllDependency.AllDependency(services, Configuration);
 
         }
 
