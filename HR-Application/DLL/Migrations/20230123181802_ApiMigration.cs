@@ -29,11 +29,9 @@ namespace DLL.Migrations
                     Email = table.Column<string>(type: "nvarchar(50)", nullable: true),
                     Role = table.Column<string>(type: "nvarchar(50)", nullable: true),
                     Designation = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    Status = table.Column<string>(type: "nvarchar(11)", nullable: true),
-                    MobileNo = table.Column<string>(type: "nvarchar(11)", nullable: false),
-                    WorkHour = table.Column<string>(type: "nvarchar(11)", nullable: false),
-                    EarlyLeft = table.Column<string>(type: "nvarchar(11)", nullable: false),
-                    OverTime = table.Column<string>(type: "nvarchar(11)", nullable: false)
+                    Status = table.Column<string>(type: "nvarchar(5)", nullable: true),
+                    MobileNo = table.Column<string>(type: "nvarchar(11)", nullable: true),
+                    WorkHour = table.Column<string>(type: "nvarchar(5)", nullable: true)
                 },
                 constraints: table =>
                 {

@@ -43,33 +43,23 @@ namespace DLL.Migrations
                     b.Property<string>("Designation")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("EarlyLeft")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(11)");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("MobileNo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("OverTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(11)");
-
                     b.Property<string>("Role")
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Status")
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("WorkHour")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("nvarchar(5)");
 
                     b.HasKey("EmployeeId");
 

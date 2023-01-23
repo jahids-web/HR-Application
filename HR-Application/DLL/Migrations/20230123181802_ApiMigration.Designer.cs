@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DLL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230122153627_ApiMigration")]
+    [Migration("20230123181802_ApiMigration")]
     partial class ApiMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,33 +45,23 @@ namespace DLL.Migrations
                     b.Property<string>("Designation")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("EarlyLeft")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(11)");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("MobileNo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("OverTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(11)");
-
                     b.Property<string>("Role")
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Status")
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("WorkHour")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("nvarchar(5)");
 
                     b.HasKey("EmployeeId");
 
