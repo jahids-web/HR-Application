@@ -22,22 +22,18 @@ namespace DLL.EntityModel
         [Column(TypeName = "nvarchar(50)")]
         public string Designation { get; set; }
 
-        [Column(TypeName = "nvarchar(11)")]
+        [Column(TypeName = "nvarchar(5)")]
         public string Status { get; set; }
 
         [Column(TypeName = "nvarchar(11)")]
-        public int MobileNo { get; set; }
+        public string MobileNo { get; set; }
 
-        [Column(TypeName = "nvarchar(11)")]
-        public int WorkHour { get; set; }
+        [Column(TypeName = "nvarchar(5)")]
+        public string WorkHour { get; set; }
 
-        [Column(TypeName = "nvarchar(11)")]
-        public int EarlyLeft { get; set; }
+       
+       
 
-        [Column(TypeName = "nvarchar(11)")]
-        public int OverTime { get; set; }
-
-     
 
     }
 }
