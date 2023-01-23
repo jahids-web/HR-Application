@@ -1,4 +1,5 @@
 ﻿using DLL.DataContext;
+using DLL.Repositories;
 using FluentAssertions.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,7 +16,7 @@ namespace DLL
 
 
             //Repository Depandency
-     
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
 
         }
