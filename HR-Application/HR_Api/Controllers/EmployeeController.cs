@@ -1,4 +1,5 @@
-﻿using DLL.EntityModel;
+﻿using BLL.Services;
+using DLL.EntityModel;
 using DLL.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,41 +9,41 @@ namespace HR_Api.Controllers
 {
     public class EmployeeController : MainController
     {
-        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeService _employeeService;
 
-        public EmployeeController(IEmployeeRepository employeeRepository)
+        public EmployeeController(IEmployeeService employeeService)
         {
-            _employeeRepository = employeeRepository;
+            _employeeService = employeeService;
         }
 
         [HttpPost]
         public async Task<IActionResult> Insert (Employee employee)
         {
-            return Ok(await _employeeRepository.InsertAsync(employee));
+            return Ok(await _employeeService.InsertAsync(employee));
         }
 
         [HttpGet]
         public async Task<IActionResult> GatAll()
         {
-            return Ok(await _employeeRepository.GetAllAsync());
+            return Ok(await _employeeService.GetAllAsync());
         }
 
         [HttpGet("{employeeId}")]
         public async Task<IActionResult> GatA(int employeeId)
         {
-            return Ok(await _employeeRepository.GetAAsync(employeeId));
+            return Ok(await _employeeService.GetAAsync(employeeId));
         }
 
         [HttpPut("{employeeId}")]
         public async Task<IActionResult> Update(int employeeId, Employee employee)
         {
-            return Ok(await _employeeRepository.UpdateAsync(employeeId, employee));
+            return Ok(await _employeeService.UpdateAsync(employeeId, employee));
         }
 
         [HttpDelete("{employeeId}")]
         public async Task<IActionResult> Delete(int employeeId)
         {
-            return Ok (await _employeeRepository.DeleteAsync(employeeId));
+            return Ok (await _employeeService.DeleteAsync(employeeId));
         }
     }
 }
