@@ -1,3 +1,4 @@
+using BLL;
 using DLL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,6 +39,7 @@ namespace HR_Api
             });
 
             DllDependency.AllDependency(services, Configuration);
+            BLLDependency.AllDependency(services, Configuration);
 
         }
 
