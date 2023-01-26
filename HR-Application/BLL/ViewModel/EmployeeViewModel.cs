@@ -31,13 +31,5 @@ namespace BLL.ViewModel
             RuleFor(x => x.WorkHour).NotNull().NotEmpty();
 
         }
-
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Designation { get; set; }
-        public string Role { get; set; }
-        public string Status { get; set; }
-        public string MobileNo { get; set; }
-        public string WorkHour { get; set; }
     }
 }
