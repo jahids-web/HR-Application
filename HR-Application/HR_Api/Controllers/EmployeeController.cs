@@ -1,4 +1,5 @@
 ﻿using BLL.Services;
+using BLL.ViewModel;
 using DLL.EntityModel;
 using DLL.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -17,9 +18,9 @@ namespace HR_Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Insert (Employee employee)
+        public async Task<IActionResult> Insert (EmployeeViewModel request)
         {
-            return Ok(await _employeeService.InsertAsync(employee));
+            return Ok(await _employeeService.InsertAsync(request));
         }
 
         [HttpGet]
