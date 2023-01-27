@@ -1,11 +1,8 @@
 ﻿using BLL.Services;
 using BLL.ViewModel;
-using FluentAssertions.Execution;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using static BLL.ViewModel.EmployeeViewModel;
 
 namespace BLL
 {
