@@ -1,6 +1,7 @@
 using BLL;
 using DLL;
 using FluentValidation.AspNetCore;
+using HR_Api.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace HR_Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers().AddFluentValidation();
+            services.AddControllers().AddFluentValidation().AddNewtonsoftJson();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HR_Api", Version = "v1" });
@@ -39,6 +40,7 @@ namespace HR_Api
                 config.AssumeDefaultVersionWhenUnspecified = true;
             });
 
+            //DllDependency.AllDependency(services, Configuration);
             DllDependency.AllDependency(services, Configuration);
             BLLDependency.AllDependency(services, Configuration);
 
@@ -54,7 +56,7 @@ namespace HR_Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HR_Api v1"));
             }
-
+            app.UseMiddleware <ExceptionMiddleware>();
             app.UseHttpsRedirection();
 
             app.UseRouting();
