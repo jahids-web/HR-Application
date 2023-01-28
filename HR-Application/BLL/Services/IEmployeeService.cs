@@ -84,7 +84,7 @@ namespace BLL.Services
                 var existsAlreasy = await _employeeRepository.FindSingLeAsync(x => x.Email == aemployee.Email);
                 if (existsAlreasy != null)
                 {
-                    throw new ApplicationValidationException("You updated Name alrady present in our systam");
+                    throw new ApplicationValidationException("You updated Email alrady present in our systam");
                 }
                 employee.Email = aemployee.Name;
             }
@@ -94,7 +94,7 @@ namespace BLL.Services
                 var existsAlreasy = await _employeeRepository.FindSingLeAsync(x => x.Designation == aemployee.Designation);
                 if (existsAlreasy != null)
                 {
-                    throw new ApplicationValidationException("You updated Name alrady present in our systam");
+                    throw new ApplicationValidationException("You updated Designation alrady present in our systam");
                 }
                 employee.Designation = aemployee.Designation;
             }
@@ -104,7 +104,7 @@ namespace BLL.Services
                 var existsAlreasy = await _employeeRepository.FindSingLeAsync(x => x.Status == aemployee.Status);
                 if (existsAlreasy != null)
                 {
-                    throw new ApplicationValidationException("You updated Name alrady present in our systam");
+                    throw new ApplicationValidationException("You updated Status alrady present in our systam");
                 }
                 employee.Status = aemployee.Status;
             }
@@ -114,7 +114,7 @@ namespace BLL.Services
                 var existsAlreasy = await _employeeRepository.FindSingLeAsync(x => x.WorkHour == aemployee.WorkHour);
                 if (existsAlreasy != null)
                 {
-                    throw new ApplicationValidationException("You updated Name alrady present in our systam");
+                    throw new ApplicationValidationException("You updated WorkHour alrady present in our systam");
                 }
                 employee.WorkHour = aemployee.WorkHour;
             }
