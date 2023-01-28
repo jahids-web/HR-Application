@@ -10,6 +10,7 @@ namespace BLL.ViewModel
 {
     public class EmployeeViewModel
     {
+        public int EmployeeId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Designation { get; set; }
@@ -23,6 +24,7 @@ namespace BLL.ViewModel
     {
         public EmployeeViewModelValidator()
         {
+            RuleFor(x => x.EmployeeId);
             RuleFor(x => x.Name).NotNull().NotEmpty();
             RuleFor(x => x.Email).NotNull().NotEmpty();
             RuleFor(x => x.Designation).NotNull().NotEmpty();
