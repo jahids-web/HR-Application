@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DLL.EntityModel
 {
-    public class Employee
+    public class Employee 
     {
         [Key]
         public int EmployeeId { get; set; }
