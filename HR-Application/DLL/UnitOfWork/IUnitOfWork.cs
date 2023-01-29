@@ -11,5 +11,6 @@ namespace DLL.UnitOfWork
     {
         IEmployeeRepository EmployeeRepository { get; }
         Task<bool> SaveChangesAsync();
+        //Task<bool> SaveCompletedAsync();
     }
 }
