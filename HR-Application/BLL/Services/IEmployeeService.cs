@@ -1,6 +1,7 @@
 ﻿using BLL.ViewModel;
 using DLL.EntityModel;
 using DLL.Repositories;
+using DLL.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,11 @@ namespace BLL.Services
 
     public class EmployeeService : IEmployeeService
     {
-        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public EmployeeService(IEmployeeRepository employeeRepository)
+        public EmployeeService(IUnitOfWork unitOfWork)
         {
-            _employeeRepository = employeeRepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task<Employee> InsertAsync(EmployeeViewModel request)
         {
@@ -38,9 +39,9 @@ namespace BLL.Services
             aEmployee.MobileNo = request.MobileNo;
             aEmployee.WorkHour = request.WorkHour;
 
-            await _employeeRepository.CreateAsync(aEmployee);
+            await _unitOfWork.EmployeeRepository.CreateAsync(aEmployee);
 
-            if(await _employeeRepository.SaveCompletedAsync())
+            if(await _unitOfWork.SaveChangesAsync())
             {
                 return aEmployee;
             }
@@ -49,7 +50,7 @@ namespace BLL.Services
 
         public async Task<Employee> GetAAsync(int employeeId)
         {
-            var employee = await _employeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
+            var employee = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
             if (employee == null)
             {
                 throw new ApplicationValidationException("Employee Not Found");
@@ -59,19 +60,19 @@ namespace BLL.Services
 
         public async Task<List<Employee>> GetAllAsync()
         {
-            return await _employeeRepository.GetList();
+            return await _unitOfWork.EmployeeRepository.GetList();
         }
 
         public async Task<Employee> UpdateAsync(int employeeId, EmployeeViewModel aemployee)
         {
-           var employee = await _employeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
+           var employee = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
             if(employee == null)
             {
                 throw new ApplicationValidationException("Employe Not Found");
             }
             if (!string.IsNullOrWhiteSpace(aemployee.Name))
             {
-                var existsAlreasy = await _employeeRepository.FindSingLeAsync(x => x.Name == aemployee.Name);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Name == aemployee.Name);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Name alrady present in our systam");
@@ -81,7 +82,7 @@ namespace BLL.Services
 
             if (!string.IsNullOrWhiteSpace(aemployee.Email))
             {
-                var existsAlreasy = await _employeeRepository.FindSingLeAsync(x => x.Email == aemployee.Email);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Email == aemployee.Email);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Email alrady present in our systam");
@@ -91,7 +92,7 @@ namespace BLL.Services
 
             if (!string.IsNullOrWhiteSpace(aemployee.Designation))
             {
-                var existsAlreasy = await _employeeRepository.FindSingLeAsync(x => x.Designation == aemployee.Designation);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Designation == aemployee.Designation);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Designation alrady present in our systam");
@@ -101,7 +102,7 @@ namespace BLL.Services
 
             if (!string.IsNullOrWhiteSpace(aemployee.Status))
             {
-                var existsAlreasy = await _employeeRepository.FindSingLeAsync(x => x.Status == aemployee.Status);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Status == aemployee.Status);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Status alrady present in our systam");
@@ -111,16 +112,16 @@ namespace BLL.Services
 
             if (!string.IsNullOrWhiteSpace(aemployee.WorkHour))
             {
-                var existsAlreasy = await _employeeRepository.FindSingLeAsync(x => x.WorkHour == aemployee.WorkHour);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.WorkHour == aemployee.WorkHour);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated WorkHour alrady present in our systam");
                 }
                 employee.WorkHour = aemployee.WorkHour;
             }
-            
-            _employeeRepository.Update(employee);
-            if (await _employeeRepository.SaveCompletedAsync())
+
+            _unitOfWork.EmployeeRepository.Update(employee);
+            if (await _unitOfWork.SaveChangesAsync())
             {
                 return employee;
             }
@@ -129,15 +130,15 @@ namespace BLL.Services
 
         public async Task<Employee> DeleteAsync(int employeeId)
         {
-           var employee = await _employeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
+           var employee = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
             if (employee == null)
             {
                 throw new ApplicationValidationException("Employe Not Found");
             }
 
-            _employeeRepository.Delete(employee);
+            _unitOfWork.EmployeeRepository.Delete(employee);
 
-            if (await _employeeRepository.SaveCompletedAsync())
+            if (await _unitOfWork.SaveChangesAsync())
             {
                 return employee;
             }
