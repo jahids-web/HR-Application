@@ -47,20 +47,20 @@ namespace BLL.Services
             }
             throw new ApplicationValidationException("Employe Insert Has Some Problem");
         }
-        public async Task<Employee> EmployeRequestInsertAsync(EmployeeViewModel request)
-        {
-            Employee aEmployee = new Employee();
-            aEmployee.LeaveApply = request.LeaveApply;
+        //public async Task<Employee> EmployeRequestInsertAsync(EmployeeViewModel request)
+        //{
+        //    Employee aEmployee = new Employee();
+        //    aEmployee.LeaveApply = request.LeaveApply;
            
 
-            await _unitOfWork.EmployeeRepository.CreateAsync(aEmployee);
+        //    await _unitOfWork.EmployeeRepository.CreateAsync(aEmployee);
 
-            if (await _unitOfWork.SaveChangesAsync())
-            {
-                return aEmployee;
-            }
-            throw new ApplicationValidationException("Employe Insert Has Some Problem");
-        }
+        //    if (await _unitOfWork.SaveChangesAsync())
+        //    {
+        //        return aEmployee;
+        //    }
+        //    throw new ApplicationValidationException("Employe Insert Has Some Problem");
+        //}
         public async Task<Employee> GetAAsync(int employeeId)
         {
             var employee = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
