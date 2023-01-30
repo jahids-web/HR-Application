@@ -16,6 +16,7 @@ namespace BLL.ViewModel
         public string Designation { get; set; }
         public string Role { get; set; }
         public string Status { get; set; }
+        public string LeaveApply { get; set; }
         public string MobileNo { get; set; }
         public string WorkHour { get; set; }
     }
@@ -29,6 +30,7 @@ namespace BLL.ViewModel
             RuleFor(x => x.Email).NotNull().NotEmpty();
             RuleFor(x => x.Designation).NotNull().NotEmpty();
             RuleFor(x => x.Status).NotNull().NotEmpty();
+            RuleFor(x => x.LeaveApply).NotNull().NotEmpty();
             RuleFor(x => x.MobileNo).NotNull().NotEmpty();
             RuleFor(x => x.WorkHour).NotNull().NotEmpty();
 
