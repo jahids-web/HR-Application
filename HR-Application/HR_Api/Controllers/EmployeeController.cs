@@ -5,6 +5,7 @@ using DLL.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Utility.Exceptions;
 
 namespace HR_Api.Controllers
 {
@@ -16,17 +17,10 @@ namespace HR_Api.Controllers
         {
             _employeeService = employeeService;
         }
-
         [HttpPost]
-        public async Task<IActionResult> Insert (EmployeeViewModel request)
+        public async Task<IActionResult> EmployeRequestInsertAsync(EmployeeViewModel request)
         {
             return Ok(await _employeeService.InsertAsync(request));
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GatAll()
-        {
-            return Ok(await _employeeService.GetAllAsync());
         }
 
         [HttpGet("{employeeId}")]
@@ -35,16 +29,6 @@ namespace HR_Api.Controllers
             return Ok(await _employeeService.GetAAsync(employeeId));
         }
 
-        [HttpPut("{employeeId}")]
-        public async Task<IActionResult> Update(int employeeId, EmployeeViewModel aemployee)
-        {
-            return Ok(await _employeeService.UpdateAsync(employeeId, aemployee));
-        }
-
-        [HttpDelete("{employeeId}")]
-        public async Task<IActionResult> Delete(int employeeId)
-        {
-            return Ok (await _employeeService.DeleteAsync(employeeId));
-        }
+      
     }
 }
