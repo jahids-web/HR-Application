@@ -1,12 +1,8 @@
-﻿using DLL.DataContext;
-using DLL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using DLL.DataContext;
 
-namespace DLL.UnitOfWork
+namespace DLL.Repositories
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
