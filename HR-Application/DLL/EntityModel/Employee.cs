@@ -26,10 +26,6 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(11)")]
 
-        public string LeaveApply { get; set; }
-
-        [Column(TypeName = "nvarchar(50)")]
-
         public string MobileNo { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
