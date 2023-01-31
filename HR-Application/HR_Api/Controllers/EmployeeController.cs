@@ -18,10 +18,7 @@ namespace HR_Api.Controllers
             _employeeService = employeeService;
         }
         [HttpPost]
-        public async Task<IActionResult> EmployeRequestInsertAsync(EmployeeViewModel request)
-        {
-            return Ok(await _employeeService.InsertAsync(request));
-        }
+  
 
         [HttpGet("{employeeId}")]
         public async Task<IActionResult> GatA(int employeeId)
