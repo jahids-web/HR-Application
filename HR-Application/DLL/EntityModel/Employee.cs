@@ -42,7 +42,7 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(5)")]
 
-        public string MobileNo { get; set; }
+        public string JoiningDate { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
         public string MobileNo { get; set; }
