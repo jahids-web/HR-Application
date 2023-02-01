@@ -38,7 +38,7 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(10)")]
 
-        public string MobileNo { get; set; }
+        public string IsEmployed { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
 
