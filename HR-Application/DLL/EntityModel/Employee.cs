@@ -26,6 +26,10 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(11)")]
 
+        public int Total_Yearly_Allocated_leave { get; set; }
+
+        [Column(TypeName = "nvarchar(12)")]
+
         public string MobileNo { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
