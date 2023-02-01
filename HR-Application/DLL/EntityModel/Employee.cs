@@ -33,6 +33,21 @@ namespace DLL.EntityModel
         public string MobileNo { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
+
+        public string Leave { get; set; }
+
+        [Column(TypeName = "nvarchar(10)")]
+
+        public string MobileNo { get; set; }
+
+        [Column(TypeName = "nvarchar(5)")]
+
+        public string MobileNo { get; set; }
+
+        [Column(TypeName = "nvarchar(5)")]
+        public string MobileNo { get; set; }
+
+        [Column(TypeName = "nvarchar(5)")]
         public string WorkHour { get; set; }
 
        
