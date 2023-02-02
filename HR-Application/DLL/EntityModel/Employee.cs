@@ -10,7 +10,7 @@ namespace DLL.EntityModel
         [Key]
         public int EmployeeId { get; set; }
 
-        [Column(TypeName = "nvarchar(50)")]
+        [Column(TypeName = "nvarchar(20)")]
         public string Name { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
