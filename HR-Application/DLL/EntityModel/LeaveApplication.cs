@@ -15,6 +15,12 @@ namespace DLL.EntityModel
         public int EmployeeId { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
+        public string Name { get; set; }
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string DepartmentName { get; set; }
+
+        [Column(TypeName = "nvarchar(20)")]
         public string Subject { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
@@ -37,5 +43,8 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(12)")]
         public string LastUpdatedAt { get; set; }
+
+        public Department Department { get; set; }
+        public Employee Employee { get; set; }
     }
 }
