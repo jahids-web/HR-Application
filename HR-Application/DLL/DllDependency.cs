@@ -14,13 +14,7 @@ namespace DLL
             services.AddDbContext<ApplicationDbContext>(options =>
                    options.UseSqlServer(configuration.GetConnectionString("HrDatabase")));
 
-
-            //Repository Depandency
-            //services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-
-
         }
     }
 }
