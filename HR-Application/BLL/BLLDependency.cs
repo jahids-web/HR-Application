@@ -11,6 +11,7 @@ namespace BLL
         public static void AllDependency(IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<IDepartmentService, DepartmentService>();
 
             AllFluentValidationDependency(services);
         }
@@ -18,6 +19,7 @@ namespace BLL
         public static void AllFluentValidationDependency(IServiceCollection services)
         {
             services.AddScoped<IValidator<EmployeeViewModel>, EmployeeViewModelValidator>();
+            services.AddScoped<IValidator<DepartmentViewModel>, DepartmentViewModelValidator>();
         }
     }
 }
