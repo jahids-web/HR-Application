@@ -1,14 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DLL.EntityModel
 {
-    public class Employee 
+    public class Employee
     {
         [Key]
         public int EmployeeId { get; set; }
+
+        //Department-Table
+        [Key]
+        public int DepartmentId { get; set; }
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string DepartmentName { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
         public string Name { get; set; }
@@ -46,9 +54,8 @@ namespace DLL.EntityModel
         [Column(TypeName = "nvarchar(5)")]
         public string WorkHour { get; set; }
 
-       
-       
-
+        public ICollection<Employee> Employees { get; set; }
+        public Department Department { get; set; }
 
     }
 }
