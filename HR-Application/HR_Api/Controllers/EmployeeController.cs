@@ -17,9 +17,7 @@ namespace HR_Api.Controllers
         {
             _employeeService = employeeService;
         }
-        [HttpPost]
-  
-
+       
         [HttpGet("{employeeId}")]
         public async Task<IActionResult> GatA(int employeeId)
         {
