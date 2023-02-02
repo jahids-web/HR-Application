@@ -20,6 +20,7 @@ namespace DLL.EntityModel
         [Column(TypeName = "nvarchar(20)")]
         public int IsPresent { get; set; }
 
-    
+        [Column(TypeName = "nvarchar(20)")]
+        public int DepartureTime { get; set; }
     }
 }
