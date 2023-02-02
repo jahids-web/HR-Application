@@ -30,12 +30,15 @@ namespace DLL.EntityModel
         public int Year { get; set; }
 
         [Column(TypeName = "nvarchar(12)")]
-        public string PostedAT { get; set; }
+        public string PostedAt { get; set; }
 
         [Column(TypeName = "nvarchar(12)")]
         public string PostedBy { get; set; }
 
         [Column(TypeName = "nvarchar(12)")]
         public string IsProvided { get; set; }
+
+        public Department Department { get; set; }
+        public Employee Employee { get; set; }
     }
 }
