@@ -13,7 +13,6 @@ namespace BLL.Services
     public interface IEmployeeService
     {
         Task<Employee> InsertAsync(EmployeeViewModel request);
-        Task<Employee> EmployeRequestInsertAsync(EmployeeViewModel request);
         Task<List<Employee>> GetAllAsync();
         Task<Employee> GetAAsync(int employeeId);
         Task<Employee> UpdateAsync(int employeeId, EmployeeViewModel aemployee);
@@ -145,6 +144,6 @@ namespace BLL.Services
             throw new ApplicationValidationException("Some Problem for delete data");
         }
 
-      
+     
     }
 }
