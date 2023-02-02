@@ -15,6 +15,9 @@ namespace DLL.EntityModel
         public int EmployeeId { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
+        public string Name { get; set; }
+
+        [Column(TypeName = "nvarchar(20)")]
         public DateTime Date { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
@@ -22,5 +25,7 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(20)")]
         public int DepartureTime { get; set; }
+
+        public Employee Employee { get; set; }
     }
 }
