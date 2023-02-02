@@ -15,6 +15,15 @@ namespace DLL.EntityModel
         public int EmployeeId { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
+        public string Name { get; set; }
+
+        [Key]
+        public int DepartmentId { get; set; }
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string DepartmentName { get; set; }
+
+        [Column(TypeName = "nvarchar(20)")]
         public string Month { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
