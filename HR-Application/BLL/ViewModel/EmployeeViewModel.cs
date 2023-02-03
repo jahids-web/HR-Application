@@ -16,7 +16,7 @@ namespace BLL.ViewModel
         public string Designation { get; set; }
         public string Role { get; set; }
         public string Status { get; set; }
-        public string Total_Yearly_Allocated_leave { get; set; }
+        public string TotalYearlyAllocatedleave { get; set; }
         public string MobileNo { get; set; }
         public string Leave { get; set; }
         public string IsEmployed { get; set; }
@@ -34,7 +34,7 @@ namespace BLL.ViewModel
             RuleFor(x => x.Email).NotNull().NotEmpty();
             RuleFor(x => x.Designation).NotNull().NotEmpty();
             RuleFor(x => x.Status).NotNull().NotEmpty();
-            RuleFor(x => x.Total_Yearly_Allocated_leave).NotNull().NotEmpty();
+            RuleFor(x => x.TotalYearlyAllocatedleave).NotNull().NotEmpty();
             RuleFor(x => x.MobileNo).NotNull().NotEmpty();
             RuleFor(x => x.Leave).NotNull().NotEmpty();
             RuleFor(x => x.IsEmployed).NotNull().NotEmpty();
