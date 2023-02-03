@@ -35,7 +35,7 @@ namespace BLL.Services
             aEmployee.Status = request.Status;   
             aEmployee.Role = request.Role;
             aEmployee.Designation = request.Designation;
-            aEmployee.Total_Yearly_Allocated_leave = request.Total_Yearly_Allocated_leave;
+            aEmployee.TotalYearlyAllocatedleave = request.TotalYearlyAllocatedleave;
             aEmployee.Leave = request.Leave;
             aEmployee.IsEmployed = request.IsEmployed;
             aEmployee.JoiningDate = request.JoiningDate;
@@ -114,14 +114,14 @@ namespace BLL.Services
                 employee.Status = aemployee.Status;
             }
 
-            if (!string.IsNullOrWhiteSpace(aemployee.Total_Yearly_Allocated_leave))
+            if (!string.IsNullOrWhiteSpace(aemployee.TotalYearlyAllocatedleave))
             {
-                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Total_Yearly_Allocated_leave == aemployee.Total_Yearly_Allocated_leave);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.TotalYearlyAllocatedleave == aemployee.TotalYearlyAllocatedleave);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Status alrady present in our systam");
                 }
-                employee.Total_Yearly_Allocated_leave = aemployee.Total_Yearly_Allocated_leave;
+                employee.TotalYearlyAllocatedleave = aemployee.TotalYearlyAllocatedleave;
             }
 
             if (!string.IsNullOrWhiteSpace(aemployee.Leave))
