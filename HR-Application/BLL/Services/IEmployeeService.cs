@@ -35,6 +35,11 @@ namespace BLL.Services
             aEmployee.Status = request.Status;   
             aEmployee.Role = request.Role;
             aEmployee.Designation = request.Designation;
+            aEmployee.Total_Yearly_Allocated_leave = request.Total_Yearly_Allocated_leave;
+            aEmployee.Leave = request.Leave;
+            aEmployee.IsEmployed = request.IsEmployed;
+            aEmployee.JoiningDate = request.JoiningDate;
+            aEmployee.DeparturedDate = request.DeparturedDate;
             aEmployee.MobileNo = request.MobileNo;
             aEmployee.WorkHour = request.WorkHour;
 
@@ -107,6 +112,36 @@ namespace BLL.Services
                     throw new ApplicationValidationException("You updated Status alrady present in our systam");
                 }
                 employee.Status = aemployee.Status;
+            }
+
+            if (!string.IsNullOrWhiteSpace(aemployee.Total_Yearly_Allocated_leave))
+            {
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Total_Yearly_Allocated_leave == aemployee.Total_Yearly_Allocated_leave);
+                if (existsAlreasy != null)
+                {
+                    throw new ApplicationValidationException("You updated Status alrady present in our systam");
+                }
+                employee.Total_Yearly_Allocated_leave = aemployee.Total_Yearly_Allocated_leave;
+            }
+
+            if (!string.IsNullOrWhiteSpace(aemployee.Leave))
+            {
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Leave == aemployee.Leave);
+                if (existsAlreasy != null)
+                {
+                    throw new ApplicationValidationException("You updated WorkHour alrady present in our systam");
+                }
+                employee.Leave = aemployee.Leave;
+            }
+
+            if (!string.IsNullOrWhiteSpace(aemployee.IsEmployed))
+            {
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.IsEmployed == aemployee.IsEmployed);
+                if (existsAlreasy != null)
+                {
+                    throw new ApplicationValidationException("You updated WorkHour alrady present in our systam");
+                }
+                employee.IsEmployed  = aemployee.IsEmployed;
             }
 
             if (!string.IsNullOrWhiteSpace(aemployee.WorkHour))
