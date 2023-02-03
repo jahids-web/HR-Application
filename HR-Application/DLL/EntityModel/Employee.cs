@@ -12,7 +12,6 @@ namespace DLL.EntityModel
         public int EmployeeId { get; set; }
 
         //Department-Table
-        [Key]
         public int DepartmentId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
@@ -34,7 +33,7 @@ namespace DLL.EntityModel
         public string Status { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
-        public int Total_Yearly_Allocated_leave { get; set; }
+        public string Total_Yearly_Allocated_leave { get; set; }
 
         [Column(TypeName = "nvarchar(12)")]
         public string MobileNo { get; set; }

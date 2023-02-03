@@ -11,7 +11,6 @@ namespace DLL.EntityModel
 {
     public class LeaveApplication
     {
-        [Key]
         public int EmployeeId { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]

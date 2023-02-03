@@ -9,33 +9,22 @@ using System.Threading.Tasks;
 
 namespace DLL.EntityModel
 {
-    public class EmployeeSalary
+    public class EmployeeWisePresentAbsent
     {
         public int EmployeeId { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
         public string Name { get; set; }
-        public int DepartmentId { get; set; }
-
-        [Column(TypeName = "nvarchar(50)")]
-        public string DepartmentName { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
-        public string Month { get; set; }
+        public DateTime Date { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
-        public int Year { get; set; }
+        public int IsPresent { get; set; }
 
-        [Column(TypeName = "nvarchar(12)")]
-        public string PostedAt { get; set; }
+        [Column(TypeName = "nvarchar(20)")]
+        public int DepartureTime { get; set; }
 
-        [Column(TypeName = "nvarchar(12)")]
-        public string PostedBy { get; set; }
-
-        [Column(TypeName = "nvarchar(12)")]
-        public string IsProvided { get; set; }
-
-        public Department Department { get; set; }
         public Employee Employee { get; set; }
     }
 }
