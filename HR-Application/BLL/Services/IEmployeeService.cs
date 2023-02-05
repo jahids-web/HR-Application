@@ -114,7 +114,7 @@ namespace BLL.Services
                 employee.Status = requestData.Status;
             }
 
-            if (!string.IsNullOrWhiteSpace(requestData.TotalYearlyAllocatedleave))
+            if (requestData.TotalYearlyAllocatedleave < 0)
             {
                 var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.TotalYearlyAllocatedleave == requestData.TotalYearlyAllocatedleave);
                 if (existsAlreasy != null)
@@ -126,7 +126,7 @@ namespace BLL.Services
 
             if (!string.IsNullOrWhiteSpace(requestData.Leave))
             {
-                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Leave == aemployee.Leave);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Leave == requestData.Leave);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated WorkHour alrady present in our systam");
