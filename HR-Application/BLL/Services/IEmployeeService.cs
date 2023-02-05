@@ -144,7 +144,7 @@ namespace BLL.Services
                 employee.IsEmployed  = requestData.IsEmployed;
             }
 
-            if (!string.IsNullOrWhiteSpace(requestData.WorkHour))
+            if (requestData.WorkHour < 0)
             {
                 var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.WorkHour == requestData.WorkHour);
                 if (existsAlreasy != null)
