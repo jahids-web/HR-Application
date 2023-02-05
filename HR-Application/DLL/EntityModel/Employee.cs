@@ -33,10 +33,10 @@ namespace DLL.EntityModel
         public string Status { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
-        public string Total_Yearly_Allocated_leave { get; set; }
+        public int TotalYearlyAllocatedleave { get; set; }
 
         [Column(TypeName = "nvarchar(12)")]
-        public string MobileNo { get; set; }
+        public int MobileNo { get; set; }
 
         [Column(TypeName = "nvarchar(15)")]
         public string Leave { get; set; }
@@ -51,7 +51,7 @@ namespace DLL.EntityModel
         public DateTime DeparturedDate { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
-        public string WorkHour { get; set; }
+        public int WorkHour { get; set; }
 
         public ICollection<Employee> Employees { get; set; }
         public Department Department { get; set; }
