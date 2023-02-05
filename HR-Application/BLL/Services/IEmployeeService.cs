@@ -67,91 +67,91 @@ namespace BLL.Services
             return await _unitOfWork.EmployeeRepository.GetList();
         }
 
-        public async Task<Employee> UpdateAsync(int employeeId, EmployeeViewModel aemployee)
+        public async Task<Employee> UpdateAsync(int employeeId, EmployeeViewModel requestData)
         {
            var employee = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
             if(employee == null)
             {
                 throw new ApplicationValidationException("Employe Not Found");
             }
-            if (!string.IsNullOrWhiteSpace(aemployee.Name))
+            if (!string.IsNullOrWhiteSpace(requestData.Name))
             {
-                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Name == aemployee.Name);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Name == requestData.Name);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Name alrady present in our systam");
                 }
-                employee.Name = aemployee.Name;
+                employee.Name = requestData.Name;
             }
 
-            if (!string.IsNullOrWhiteSpace(aemployee.Email))
+            if (!string.IsNullOrWhiteSpace(requestData.Email))
             {
-                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Email == aemployee.Email);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Email == requestData.Email);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Email alrady present in our systam");
                 }
-                employee.Email = aemployee.Name;
+                employee.Email = requestData.Name;
             }
 
-            if (!string.IsNullOrWhiteSpace(aemployee.Designation))
+            if (!string.IsNullOrWhiteSpace(requestData.Designation))
             {
-                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Designation == aemployee.Designation);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Designation == requestData.Designation);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Designation alrady present in our systam");
                 }
-                employee.Designation = aemployee.Designation;
+                employee.Designation = requestData.Designation;
             }
 
-            if (!string.IsNullOrWhiteSpace(aemployee.Status))
+            if (!string.IsNullOrWhiteSpace(requestData.Status))
             {
-                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Status == aemployee.Status);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Status == requestData.Status);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Status alrady present in our systam");
                 }
-                employee.Status = aemployee.Status;
+                employee.Status = requestData.Status;
             }
 
-            if (!string.IsNullOrWhiteSpace(aemployee.TotalYearlyAllocatedleave))
+            if (!string.IsNullOrWhiteSpace(requestData.TotalYearlyAllocatedleave))
             {
-                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.TotalYearlyAllocatedleave == aemployee.TotalYearlyAllocatedleave);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.TotalYearlyAllocatedleave == requestData.TotalYearlyAllocatedleave);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Status alrady present in our systam");
                 }
-                employee.TotalYearlyAllocatedleave = aemployee.TotalYearlyAllocatedleave;
+                employee.TotalYearlyAllocatedleave = requestData.TotalYearlyAllocatedleave;
             }
 
-            if (!string.IsNullOrWhiteSpace(aemployee.Leave))
+            if (!string.IsNullOrWhiteSpace(requestData.Leave))
             {
                 var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Leave == aemployee.Leave);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated WorkHour alrady present in our systam");
                 }
-                employee.Leave = aemployee.Leave;
+                employee.Leave = requestData.Leave;
             }
 
-            if (!string.IsNullOrWhiteSpace(aemployee.IsEmployed))
+            if (!string.IsNullOrWhiteSpace(requestData.IsEmployed))
             {
-                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.IsEmployed == aemployee.IsEmployed);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.IsEmployed == requestData.IsEmployed);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated WorkHour alrady present in our systam");
                 }
-                employee.IsEmployed  = aemployee.IsEmployed;
+                employee.IsEmployed  = requestData.IsEmployed;
             }
 
-            if (!string.IsNullOrWhiteSpace(aemployee.WorkHour))
+            if (!string.IsNullOrWhiteSpace(requestData.WorkHour))
             {
-                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.WorkHour == aemployee.WorkHour);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.WorkHour == requestData.WorkHour);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated WorkHour alrady present in our systam");
                 }
-                employee.WorkHour = aemployee.WorkHour;
+                employee.WorkHour = requestData.WorkHour;
             }
 
             _unitOfWork.EmployeeRepository.Update(employee);
