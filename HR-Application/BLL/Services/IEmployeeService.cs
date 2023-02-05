@@ -94,13 +94,9 @@ namespace BLL.Services
                 employee.Email = requestData.Name;
             }
 
-            if (!string.IsNullOrWhiteSpace(requestData.Designation))
+            if (string.IsNullOrWhiteSpace(requestData.Designation))
             {
                 var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Designation == requestData.Designation);
-                if (existsAlreasy != null)
-                {
-                    throw new ApplicationValidationException("You updated Designation alrady present in our systam");
-                }
                 employee.Designation = requestData.Designation;
             }
 
