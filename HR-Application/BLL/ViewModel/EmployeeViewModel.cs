@@ -16,13 +16,13 @@ namespace BLL.ViewModel
         public string Designation { get; set; }
         public string Role { get; set; }
         public string Status { get; set; }
-        public string TotalYearlyAllocatedleave { get; set; }
-        public string MobileNo { get; set; }
+        public int TotalYearlyAllocatedleave { get; set; }
+        public int MobileNo { get; set; }
         public string Leave { get; set; }
         public string IsEmployed { get; set; }
         public DateTime JoiningDate { get; set; }
         public DateTime DeparturedDate { get; set; }
-        public string WorkHour { get; set; }
+        public int WorkHour { get; set; }
     }
 
     public class EmployeeViewModelValidator : AbstractValidator<EmployeeViewModel>
