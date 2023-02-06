@@ -96,14 +96,13 @@ namespace BLL.Services
                 employee.Email = requestData.Name;
             }
 
-            if (string.IsNullOrWhiteSpace(requestData.Designation))
+            if (!string.IsNullOrWhiteSpace(requestData.Designation))
             {
-                     employee.Designation = requestData.Designation;
+                employee.Designation = requestData.Designation;
             }
 
             if (!string.IsNullOrWhiteSpace(requestData.Status))
             {
-             
                 employee.Status = requestData.Status;
             }
 
