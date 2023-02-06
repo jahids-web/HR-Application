@@ -12,7 +12,7 @@ namespace DLL.EntityModel
         public int EmployeeId { get; set; }
 
         //Department-Table
-        public int DepartmentId { get; set; }
+        
 
         [Column(TypeName = "nvarchar(50)")]
         public string DepartmentName { get; set; }
@@ -52,8 +52,8 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(5)")]
         public int WorkHour { get; set; }
-
-        public ICollection<Employee> Employees { get; set; }
+        [ForeignKey("DepartmentId")]
+        public int DepartmentId { get; set; }
         public Department Department { get; set; }
 
     }
