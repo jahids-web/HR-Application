@@ -11,7 +11,6 @@ namespace BLL.ViewModel
 {
     public class DepartmentViewModel
     {
-        public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
     }
 
@@ -19,7 +18,7 @@ namespace BLL.ViewModel
     {
         public DepartmentViewModelValidator()
         {
-            RuleFor(x => x.DepartmentId);
+            
             RuleFor(x => x.DepartmentName).NotNull().NotEmpty();
        
 
