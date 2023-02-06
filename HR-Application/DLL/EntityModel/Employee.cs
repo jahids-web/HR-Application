@@ -12,8 +12,6 @@ namespace DLL.EntityModel
         public int EmployeeId { get; set; }
 
         //Department-Table
-        
-
         [Column(TypeName = "nvarchar(50)")]
         public string DepartmentName { get; set; }
 
@@ -52,8 +50,7 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(5)")]
         public int WorkHour { get; set; }
-        
-      
+       
         public int DepartmentId { get; set; } //one employee one department one-one
         [ForeignKey("DepartmentId")] 
         public Department Department { get; set; }
