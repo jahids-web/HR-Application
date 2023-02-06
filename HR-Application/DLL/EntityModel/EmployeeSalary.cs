@@ -11,11 +11,13 @@ namespace DLL.EntityModel
 {
     public class EmployeeSalary
     {
-        public int EmployeeId { get; set; }
+        [Key]
+        public int EmployeeSalaryId { get; set; }
+        
 
         [Column(TypeName = "nvarchar(20)")]
         public string Name { get; set; }
-        public int DepartmentId { get; set; }
+        
 
         [Column(TypeName = "nvarchar(50)")]
         public string DepartmentName { get; set; }
@@ -34,8 +36,12 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(12)")]
         public string IsProvided { get; set; }
-
+        public int DepartmentId { get; set; }
+        [ForeignKey("DepartmentId")]
         public Department Department { get; set; }
+       
+        public int EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
         public Employee Employee { get; set; }
     }
 }

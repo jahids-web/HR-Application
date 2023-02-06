@@ -11,8 +11,8 @@ namespace DLL.EntityModel
 {
     public class EmployeeWisePresentAbsent
     {
-        public int EmployeeId { get; set; }
-
+        
+        [Key] public int EmployeeWisePresentAbsentId { get; set; }
         [Column(TypeName = "nvarchar(20)")]
         public string Name { get; set; }
 
@@ -24,7 +24,9 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(20)")]
         public int DepartureTime { get; set; }
-
-        public Employee Employee { get; set; }
+       
+        public int EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
+        public Employee Employee { get; set; }// one to one 
     }
 }

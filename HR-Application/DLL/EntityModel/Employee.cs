@@ -52,8 +52,10 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(5)")]
         public int WorkHour { get; set; }
-        [ForeignKey("DepartmentId")]
-        public int DepartmentId { get; set; }
+        
+      
+        public int DepartmentId { get; set; } //one employee one department one-one
+        [ForeignKey("DepartmentId")] 
         public Department Department { get; set; }
 
     }

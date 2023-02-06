@@ -14,6 +14,6 @@ namespace DLL.EntityModel
         [Column(TypeName = "nvarchar(50)")]
         public string DepartmentName { get; set; }
 
-        public ICollection<Employee> Employees { get; set; }
+        public ICollection<Employee> Employees { get; set; }//one department many employees one-many
     }
 }

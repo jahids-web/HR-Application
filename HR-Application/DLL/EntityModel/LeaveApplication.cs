@@ -11,7 +11,9 @@ namespace DLL.EntityModel
 {
     public class LeaveApplication
     {
-        public int EmployeeId { get; set; }
+        [Key] 
+        public int LeaveApplicationId { get; set; }
+        
 
         [Column(TypeName = "nvarchar(20)")]
         public string Name { get; set; }
@@ -43,7 +45,12 @@ namespace DLL.EntityModel
         [Column(TypeName = "nvarchar(12)")]
         public string LastUpdatedAt { get; set; }
 
+        public int DepartmentId { get; set; }
+        [ForeignKey("DepartmentId")]
         public Department Department { get; set; }
+        
+        public int EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
         public Employee Employee { get; set; }
     }
 }
