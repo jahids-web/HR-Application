@@ -13,7 +13,6 @@ namespace DLL.EntityModel
     {
         [Key] 
         public int LeaveApplicationId { get; set; }
-        
 
         [Column(TypeName = "nvarchar(20)")]
         public string Name { get; set; }
