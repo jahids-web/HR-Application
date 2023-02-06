@@ -12,7 +12,9 @@ namespace DLL.EntityModel
     public class EmployeeWisePresentAbsent
     {
         
-        [Key] public int EmployeeWisePresentAbsentId { get; set; }
+        [Key] 
+        public int EmployeeWisePresentAbsentId { get; set; }
+
         [Column(TypeName = "nvarchar(20)")]
         public string Name { get; set; }
 
