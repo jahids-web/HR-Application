@@ -13,12 +13,10 @@ namespace DLL.EntityModel
     {
         [Key]
         public int EmployeeSalaryId { get; set; }
-        
 
         [Column(TypeName = "nvarchar(20)")]
         public string Name { get; set; }
         
-
         [Column(TypeName = "nvarchar(50)")]
         public string DepartmentName { get; set; }
 
