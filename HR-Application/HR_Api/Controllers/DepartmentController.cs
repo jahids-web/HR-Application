@@ -16,14 +16,18 @@ namespace HR_Api.Controllers
             _departmentService = employeeService;
         }
 
-        
+        [HttpPost]
+        public async Task<IActionResult> Insert(DepartmentViewModel request)
+        {
+            return Ok(await _departmentService.InsertAsync(request));
+        }
 
-      
 
-      
 
-       
 
-       
+
+
+
+
     }
 }
