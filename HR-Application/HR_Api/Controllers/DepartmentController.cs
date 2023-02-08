@@ -11,9 +11,9 @@ namespace HR_Api.Controllers
     {
         private readonly IDepartmentService _departmentService;
 
-        public DepartmentController(IDepartmentService employeeService)
+        public DepartmentController(IDepartmentService departmentService)
         {
-            _departmentService = employeeService;
+            _departmentService = departmentService;
         }
 
         [HttpPost]
