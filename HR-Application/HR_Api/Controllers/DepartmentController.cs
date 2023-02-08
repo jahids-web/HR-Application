@@ -22,7 +22,11 @@ namespace HR_Api.Controllers
             return Ok(await _departmentService.InsertAsync(request));
         }
 
-
+        [HttpGet]
+        public async Task<IActionResult> GatAll()
+        {
+            return Ok(await _departmentService.GetAllAsync());
+        }
 
 
 
