@@ -28,6 +28,11 @@ namespace HR_Api.Controllers
             return Ok(await _departmentService.GetAllAsync());
         }
 
+        [HttpGet("{departmentId}")]
+        public async Task<IActionResult> GatA(int departmentId)
+        {
+            return Ok(await _departmentService.GetAAsync(departmentId));
+        }
 
 
 
