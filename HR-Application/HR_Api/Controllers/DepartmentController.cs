@@ -34,6 +34,11 @@ namespace HR_Api.Controllers
             return Ok(await _departmentService.GetAAsync(departmentId));
         }
 
+        [HttpPut("{departmentId}")]
+        public async Task<IActionResult> Update(int departmentId, DepartmentViewModel aemployee)
+        {
+            return Ok(await _departmentService.UpdateAsync(departmentId, aemployee));
+        }
 
 
 
