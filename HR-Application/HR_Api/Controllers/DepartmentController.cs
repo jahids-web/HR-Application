@@ -40,7 +40,11 @@ namespace HR_Api.Controllers
             return Ok(await _departmentService.UpdateAsync(departmentId, aemployee));
         }
 
-
+        [HttpDelete("{departmentId}")]
+        public async Task<IActionResult> Delete(int departmentId)
+        {
+            return Ok(await _departmentService.DeleteAsync(departmentId));
+        }
 
 
     }
