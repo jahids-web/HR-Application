@@ -50,6 +50,6 @@ namespace DLL.EntityModel
         
         public int EmployeeId { get; set; }
         [ForeignKey("EmployeeId")]
-        
+        public Employee Employee { get; set; } /*one-to-one*/
     }
 }
