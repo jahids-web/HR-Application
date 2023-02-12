@@ -34,9 +34,6 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(12)")]
         public string IsProvided { get; set; }
-        public int DepartmentId { get; set; }
-        [ForeignKey("DepartmentId")]
-        public Department Department { get; set; }
        
         public int EmployeeId { get; set; }
         [ForeignKey("EmployeeId")]
