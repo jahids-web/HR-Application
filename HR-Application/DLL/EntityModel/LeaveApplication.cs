@@ -43,13 +43,9 @@ namespace DLL.EntityModel
 
         [Column(TypeName = "nvarchar(12)")]
         public string LastUpdatedAt { get; set; }
-
-        public int DepartmentId { get; set; }
-        [ForeignKey("DepartmentId")]
         public Department Department { get; set; }
-        
         public int EmployeeId { get; set; }
-        [ForeignKey("EmployeeId")]
+        //[ForeignKey("EmployeeId")]
         public Employee Employee { get; set; } /*one-to-one*/
     }
 }
