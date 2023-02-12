@@ -52,7 +52,7 @@ namespace DLL.EntityModel
         public int WorkHour { get; set; }
        
         public int DepartmentId { get; set; } //one employee one department one-one
-        [ForeignKey("DepartmentId")] 
+        //[ForeignKey("DepartmentId")] 
         public Department Department { get; set; }
 
     }
