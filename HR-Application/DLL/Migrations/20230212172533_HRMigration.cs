@@ -2,7 +2,7 @@
 
 namespace DLL.Migrations
 {
-    public partial class ApiMigration : Migration
+    public partial class HRMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,18 +64,11 @@ namespace DLL.Migrations
                     PostedAt = table.Column<string>(type: "nvarchar(12)", nullable: true),
                     PostedBy = table.Column<string>(type: "nvarchar(12)", nullable: true),
                     IsProvided = table.Column<string>(type: "nvarchar(12)", nullable: true),
-                    DepartmentId = table.Column<int>(type: "int", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EmployeeSalarys", x => x.EmployeeSalaryId);
-                    table.ForeignKey(
-                        name: "FK_EmployeeSalarys_Departments_DepartmentId",
-                        column: x => x.DepartmentId,
-                        principalTable: "Departments",
-                        principalColumn: "DepartmentId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_EmployeeSalarys_Employees_EmployeeId",
                         column: x => x.EmployeeId,
@@ -123,7 +116,7 @@ namespace DLL.Migrations
                     ApprovalDate = table.Column<string>(type: "nvarchar(12)", nullable: false),
                     ApplicationDate = table.Column<string>(type: "nvarchar(12)", nullable: false),
                     LastUpdatedAt = table.Column<string>(type: "nvarchar(12)", nullable: true),
-                    DepartmentId = table.Column<int>(type: "int", nullable: false),
+                    DepartmentId = table.Column<int>(type: "int", nullable: true),
                     EmployeeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -134,7 +127,7 @@ namespace DLL.Migrations
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "DepartmentId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_LeaveApplications_Employees_EmployeeId",
                         column: x => x.EmployeeId,
@@ -146,11 +139,6 @@ namespace DLL.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_DepartmentId",
                 table: "Employees",
-                column: "DepartmentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EmployeeSalarys_DepartmentId",
-                table: "EmployeeSalarys",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
