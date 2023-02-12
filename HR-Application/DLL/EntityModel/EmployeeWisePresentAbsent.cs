@@ -28,7 +28,7 @@ namespace DLL.EntityModel
         public int DepartureTime { get; set; }
        
         public int EmployeeId { get; set; }
-        [ForeignKey("EmployeeId")]
+        //[ForeignKey("EmployeeId")]
         public Employee Employee { get; set; }// one to one 
     }
 }
