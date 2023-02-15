@@ -59,7 +59,7 @@ namespace BLL.Services
             throw new ApplicationValidationException("Employe Insert Has Some Problem");
         }
         
-        public async Task<Employee> GetAAsync(int employeeId)
+        public async Task<Employee> GetAAsync(string employeeId)
         {
             var employee = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
             if (employee == null)
@@ -74,7 +74,7 @@ namespace BLL.Services
             return await _unitOfWork.EmployeeRepository.GetList();
         }
 
-        public async Task<Employee> UpdateAsync(int employeeId, EmployeeViewModel requestData)
+        public async Task<Employee> UpdateAsync(string employeeId, EmployeeViewModel requestData)
         {
            var employee = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
             if(employee == null)
