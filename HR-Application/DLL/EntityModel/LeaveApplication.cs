@@ -12,7 +12,10 @@ namespace DLL.EntityModel
     public class LeaveApplication
     {
         [Key] 
-        public int LeaveApplicationId { get; set; }
+        public int Id { get; set; }
+
+        [Column(TypeName = "nvarchar(10)")]
+        public string LeaveApplicationId { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
         public string Name { get; set; }
