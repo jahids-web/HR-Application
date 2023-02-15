@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,7 +8,10 @@ namespace DLL.EntityModel
     public class Employee
     {
         [Key]
-        public int EmployeeId { get; set; }
+        public int Id { get; set; }
+
+        [Column(TypeName = "nvarchar(10)")]
+        public string EmployeeId { get; set; }
 
         //Department-Table
         [Column(TypeName = "nvarchar(50)")]
