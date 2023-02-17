@@ -6,6 +6,7 @@ namespace DLL.Repositories
     {
         IEmployeeRepository EmployeeRepository { get; }
         IDepartmentRepository DepartmentRepository { get; }
+        ISalaryRepository SalaryRepository { get; }
         Task<bool> SaveChangesAsync();
         
     }

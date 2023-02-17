@@ -17,12 +17,16 @@ namespace DLL.Repositories
 
         private IEmployeeRepository _employeeRepository;
         private IDepartmentRepository _departmentRepository;
+        private ISalaryRepository _salaryRepository;
         
         public IEmployeeRepository EmployeeRepository =>
             _employeeRepository ?? new EmployeeRepository(_context);
 
         public IDepartmentRepository DepartmentRepository =>
            _departmentRepository ?? new DepartmentRepository(_context);
+
+        public ISalaryRepository SalaryRepository =>
+        _salaryRepository ?? new SalaryRepository(_context);
 
         protected virtual void Dispose(bool disposing)
         {

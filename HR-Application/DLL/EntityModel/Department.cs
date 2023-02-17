@@ -9,6 +9,10 @@ namespace DLL.EntityModel
     public class Department
     {
         [Key]
+        public int Id { get; set; }
+
+        [Required]
+        [Column(TypeName = "nvarchar(10)")]
         public int DepartmentId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]

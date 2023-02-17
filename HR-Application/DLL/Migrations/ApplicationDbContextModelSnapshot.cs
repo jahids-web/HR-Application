@@ -21,22 +21,26 @@ namespace DLL.Migrations
 
             modelBuilder.Entity("DLL.EntityModel.Department", b =>
                 {
-                    b.Property<int>("DepartmentId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("DepartmentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)");
+
                     b.Property<string>("DepartmentName")
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("DepartmentId");
+                    b.HasKey("Id");
 
                     b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("DLL.EntityModel.Employee", b =>
                 {
-                    b.Property<int>("EmployeeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -56,6 +60,10 @@ namespace DLL.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("EmployeeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("IsEmployed")
                         .HasColumnType("nvarchar(10)");
@@ -88,7 +96,7 @@ namespace DLL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(5)");
 
-                    b.HasKey("EmployeeId");
+                    b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
 
@@ -97,16 +105,23 @@ namespace DLL.Migrations
 
             modelBuilder.Entity("DLL.EntityModel.EmployeeSalary", b =>
                 {
-                    b.Property<int>("EmployeeSalaryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("DepartmentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DepartmentName")
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
+
+                    b.Property<string>("EmployeeSalaryId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("IsProvided")
                         .HasColumnType("nvarchar(12)");
@@ -127,7 +142,9 @@ namespace DLL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
 
-                    b.HasKey("EmployeeSalaryId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
 
                     b.HasIndex("EmployeeId");
 
@@ -136,7 +153,7 @@ namespace DLL.Migrations
 
             modelBuilder.Entity("DLL.EntityModel.EmployeeWisePresentAbsent", b =>
                 {
-                    b.Property<int>("EmployeeWisePresentAbsentId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -152,6 +169,10 @@ namespace DLL.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
+                    b.Property<string>("EmployeeWisePresentAbsentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)");
+
                     b.Property<string>("IsPresent")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
@@ -159,7 +180,7 @@ namespace DLL.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(20)");
 
-                    b.HasKey("EmployeeWisePresentAbsentId");
+                    b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
 
@@ -168,7 +189,7 @@ namespace DLL.Migrations
 
             modelBuilder.Entity("DLL.EntityModel.LeaveApplication", b =>
                 {
-                    b.Property<int>("LeaveApplicationId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -199,6 +220,10 @@ namespace DLL.Migrations
                     b.Property<string>("LastUpdatedAt")
                         .HasColumnType("nvarchar(12)");
 
+                    b.Property<string>("LeaveApplicationId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(20)");
 
@@ -211,7 +236,7 @@ namespace DLL.Migrations
                     b.Property<string>("To")
                         .HasColumnType("nvarchar(20)");
 
-                    b.HasKey("LeaveApplicationId");
+                    b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
 
@@ -233,11 +258,17 @@ namespace DLL.Migrations
 
             modelBuilder.Entity("DLL.EntityModel.EmployeeSalary", b =>
                 {
+                    b.HasOne("DLL.EntityModel.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId");
+
                     b.HasOne("DLL.EntityModel.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Department");
 
                     b.Navigation("Employee");
                 });
