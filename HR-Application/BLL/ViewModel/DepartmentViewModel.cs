@@ -19,10 +19,8 @@ namespace BLL.ViewModel
     {
         public DepartmentViewModelValidator()
         {
-            
+            RuleFor(x => x.DepartmentId).NotNull().NotEmpty();
             RuleFor(x => x.DepartmentName).NotNull().NotEmpty();
-       
-
         }
     }
 }
