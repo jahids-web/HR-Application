@@ -19,7 +19,7 @@ namespace HR_Api.Controllers
         }
        
         [HttpGet("{employeeId}")]
-        public async Task<IActionResult> GatA(int employeeId)
+        public async Task<IActionResult> GatA(string employeeId)
         {
             return Ok(await _employeeService.GetAAsync(employeeId));
         }
