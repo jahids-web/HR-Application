@@ -28,19 +28,19 @@ namespace HR_Api.Controllers
         }
 
         [HttpGet("{employeeId}")]
-        public async Task<IActionResult> GatA(int employeeId)
+        public async Task<IActionResult> GatA(string employeeId)
         {
             return Ok(await _employeeService.GetAAsync(employeeId));
         }
 
         [HttpPut("{employeeId}")]
-        public async Task<IActionResult> Update(int employeeId, EmployeeViewModel aemployee)
+        public async Task<IActionResult> Update(string employeeId, EmployeeViewModel aemployee)
         {
             return Ok(await _employeeService.UpdateAsync(employeeId, aemployee));
         }
 
         [HttpDelete("{employeeId}")]
-        public async Task<IActionResult> Delete(int employeeId)
+        public async Task<IActionResult> Delete(string employeeId)
         {
             return Ok(await _employeeService.DeleteAsync(employeeId));
         }
