@@ -14,9 +14,9 @@ namespace BLL.Services
     {
         Task<Employee> InsertAsync(EmployeeViewModel request);
         Task<List<Employee>> GetAllAsync();
-        Task<Employee> GetAAsync(int employeeId);
-        Task<Employee> UpdateAsync(int employeeId, EmployeeViewModel aemployee);
-        Task<Employee> DeleteAsync(int employeeId);
+        Task<Employee> GetAAsync(string employeeId);
+        Task<Employee> UpdateAsync(string employeeId, EmployeeViewModel requestData);
+        Task<Employee> DeleteAsync(string employeeId);
     }
 
     public class EmployeeService : IEmployeeService
@@ -36,6 +36,7 @@ namespace BLL.Services
                 
             }
             Employee aEmployee = new Employee();
+            aEmployee.EmployeeId = request.EmployeeId;
             aEmployee.Name = request.Name;
             aEmployee.Email = request.Email;
             aEmployee.Status = request.Status;   
@@ -93,14 +94,17 @@ namespace BLL.Services
                 {
                     throw new ApplicationValidationException("You updated Email alrady present in our systam");
                 }
-                employee.Email = requestData.Name;
+                employee.Email = requestData.Email;
             }
 
             if (!string.IsNullOrWhiteSpace(requestData.Designation))
             {
                 employee.Designation = requestData.Designation;
             }
-
+            if (!string.IsNullOrWhiteSpace(requestData.Role))
+            {
+                employee.Role = requestData.Role;
+            }
             if (!string.IsNullOrWhiteSpace(requestData.Status))
             {
                 employee.Status = requestData.Status;
@@ -110,12 +114,14 @@ namespace BLL.Services
             {
                 employee.TotalYearlyAllocatedleave = requestData.TotalYearlyAllocatedleave;
             }
+            employee.MobileNo = requestData.MobileNo;
 
             if (!string.IsNullOrWhiteSpace(requestData.Leave))
             {
                 employee.Leave = requestData.Leave;
             }
-            
+            employee.JoiningDate= requestData.JoiningDate;
+            employee.DeparturedDate= requestData.DeparturedDate;
 
             if (requestData.WorkHour > 0)
             { 
@@ -130,7 +136,7 @@ namespace BLL.Services
             throw new ApplicationValidationException("In Update have Some Problem");
         }
 
-        public async Task<Employee> DeleteAsync(int employeeId)
+        public async Task<Employee> DeleteAsync(string employeeId)
         {
            var employee = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
             if (employee == null)
