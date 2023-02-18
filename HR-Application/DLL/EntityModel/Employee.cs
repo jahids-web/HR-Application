@@ -12,7 +12,7 @@ namespace DLL.EntityModel
 
         [Required]
         [Column(TypeName = "nvarchar(10)")]
-        public  string EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
 
         //Department-Table
         [Column(TypeName = "nvarchar(50)")]
