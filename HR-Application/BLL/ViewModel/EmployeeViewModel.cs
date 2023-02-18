@@ -32,6 +32,7 @@ namespace BLL.ViewModel
         {
           
             RuleFor(x => x.EmployeeId).NotNull().NotEmpty();
+            RuleFor(x => x.DepartmentId).NotNull().NotEmpty();
             RuleFor(x => x.Name).NotNull().NotEmpty();
             RuleFor(x => x.Email).NotNull().NotEmpty();
             RuleFor(x => x.Designation).NotNull().NotEmpty();
