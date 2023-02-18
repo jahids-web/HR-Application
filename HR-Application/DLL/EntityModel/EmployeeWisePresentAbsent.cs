@@ -31,7 +31,7 @@ namespace DLL.EntityModel
         [Column(TypeName = "nvarchar(20)")]
         public int DepartureTime { get; set; }
        
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
    
         public Employee Employee { get; set; }// one to one 
     }
