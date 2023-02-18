@@ -39,7 +39,7 @@ namespace DLL.EntityModel
         [Column(TypeName = "nvarchar(12)")]
         public string IsProvided { get; set; }
        
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
 
         public Employee Employee { get; set; }// one to one 
         public Department Department { get; set; }// one to one 
