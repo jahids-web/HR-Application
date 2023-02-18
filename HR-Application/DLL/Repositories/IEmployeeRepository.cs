@@ -11,7 +11,7 @@ namespace DLL.Repositories
 {
     public interface IEmployeeRepository : IRepositoryBase<Employee>
     {
-
+       
     }
 
     public class EmployeeRepository : RepositoryBase<Employee>, IEmployeeRepository
