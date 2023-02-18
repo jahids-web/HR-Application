@@ -10,6 +10,8 @@ namespace BLL.ViewModel
     public class SalaryViewModel
     {
         public string EmployeeSalaryId { get; set; }
+        public string EmployeeId { get; set; }
+        public string DepartmentName { get; set; }
         public string Name { get; set; }
         public string Month { get; set; }
         public int Year { get; set; }
@@ -24,6 +26,8 @@ namespace BLL.ViewModel
         {
 
             RuleFor(x => x.EmployeeSalaryId).NotNull().NotEmpty();
+            RuleFor(x => x.EmployeeId).NotNull().NotEmpty();
+            RuleFor(x => x.DepartmentName).NotNull().NotEmpty();
             RuleFor(x => x.Name).NotNull().NotEmpty();
             RuleFor(x => x.Month).NotNull().NotEmpty();
             RuleFor(x => x.Year).NotNull().NotEmpty();
