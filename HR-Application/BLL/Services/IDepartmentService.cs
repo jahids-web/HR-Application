@@ -15,7 +15,7 @@ namespace BLL.Services
         Task<Department> InsertAsync(DepartmentViewModel request);
         Task<List<Department>> GetAllAsync();
         Task<Department> GetAAsync(int departmentId);
-        Task<Department> UpdateAsync(int departmentId, DepartmentViewModel adepartment);
+        Task<Department> UpdateAsync(int departmentId, DepartmentViewModel aDepartment);
         Task<Department> DeleteAsync(int departmentId);
     }
 
@@ -30,16 +30,16 @@ namespace BLL.Services
 
         public async Task<Department> InsertAsync(DepartmentViewModel request)
         {
-            Department adepartment = new Department();
-            adepartment.DepartmentId = request.DepartmentId;
-            adepartment.DepartmentName = request.DepartmentName;
+            Department aDepartment = new Department();
+            aDepartment.DepartmentId = request.DepartmentId;
+            aDepartment.DepartmentName = request.DepartmentName;
  
 
-            await _unitOfWork.DepartmentRepository.CreateAsync(adepartment);
+            await _unitOfWork.DepartmentRepository.CreateAsync(aDepartment);
 
             if (await _unitOfWork.SaveChangesAsync())
             {
-                return adepartment;
+                return aDepartment;
             }
             throw new ApplicationValidationException("Department Insert Has Some Problem");
         }
@@ -59,21 +59,21 @@ namespace BLL.Services
             return await _unitOfWork.DepartmentRepository.GetList();
         }
 
-        public async Task<Department> UpdateAsync(int departmentId, DepartmentViewModel adepartment)
+        public async Task<Department> UpdateAsync(int departmentId, DepartmentViewModel aDepartment)
         {
             var employee = await _unitOfWork.DepartmentRepository.FindSingLeAsync(x => x.DepartmentId == departmentId);
             if (employee == null)
             {
                 throw new ApplicationValidationException("Employe Not Found");
             }
-            if (!string.IsNullOrWhiteSpace(adepartment.DepartmentName))
+            if (!string.IsNullOrWhiteSpace(aDepartment.DepartmentName))
             {
-                var existsAlreasy = await _unitOfWork.DepartmentRepository.FindSingLeAsync(x => x.DepartmentName == adepartment.DepartmentName);
+                var existsAlreasy = await _unitOfWork.DepartmentRepository.FindSingLeAsync(x => x.DepartmentName == aDepartment.DepartmentName);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Email alrady present in our systam");
                 }
-                employee.DepartmentName = adepartment.DepartmentName;
+                employee.DepartmentName = aDepartment.DepartmentName;
             }
 
             _unitOfWork.DepartmentRepository.Update(employee);
