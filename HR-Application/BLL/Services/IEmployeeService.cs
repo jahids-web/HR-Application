@@ -15,7 +15,7 @@ namespace BLL.Services
         Task<Employee> InsertAsync(EmployeeViewModel request);
         Task<List<Employee>> GetAllAsync();
         Task<Employee> GetAAsync(string employeeId);
-        Task<Employee> UpdateAsync(string employeeId, EmployeeViewModel requestData);
+        Task<Employee> UpdateAsync(string employeeId, EmployeeViewModel employeeData);
         Task<Employee> DeleteAsync(string employeeId);
     }
 
@@ -31,10 +31,7 @@ namespace BLL.Services
         {
             var department =
                await _unitOfWork.DepartmentRepository.FindSingLeAsync(x => x.DepartmentId == request.DepartmentId);
-            if (department == null)
-            {
-                
-            }
+
             Employee aEmployee = new Employee();
             aEmployee.EmployeeId = request.EmployeeId;
             aEmployee.Name = request.Name;
@@ -75,57 +72,61 @@ namespace BLL.Services
             return await _unitOfWork.EmployeeRepository.GetList();
         }
 
-        public async Task<Employee> UpdateAsync(string employeeId, EmployeeViewModel requestData)
+        public async Task<Employee> UpdateAsync(string employeeId, EmployeeViewModel employeeData)
         {
            var employee = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.EmployeeId == employeeId);
             if(employee == null)
             {
                 throw new ApplicationValidationException("Employe Not Found");
             }
-            if (!string.IsNullOrWhiteSpace(requestData.Name))
+            if (!string.IsNullOrWhiteSpace(employeeData.Name))
             {
-                employee.Name = requestData.Name;
+                employee.Name = employeeData.Name;
             }
 
-            if (!string.IsNullOrWhiteSpace(requestData.Email))
+            if (!string.IsNullOrWhiteSpace(employeeData.Email))
             {
-                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Email == requestData.Email);
+                var existsAlreasy = await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.Email == employeeData.Email);
                 if (existsAlreasy != null)
                 {
                     throw new ApplicationValidationException("You updated Email alrady present in our systam");
                 }
-                employee.Email = requestData.Email;
+                employee.Email = employeeData.Email;
             }
 
-            if (!string.IsNullOrWhiteSpace(requestData.Designation))
+            if (!string.IsNullOrWhiteSpace(employeeData.Designation))
             {
-                employee.Designation = requestData.Designation;
+                employee.Designation = employeeData.Designation;
             }
-            if (!string.IsNullOrWhiteSpace(requestData.Role))
+            if (!string.IsNullOrWhiteSpace(employeeData.Role))
             {
-                employee.Role = requestData.Role;
+                employee.Role = employeeData.Role;
             }
-            if (!string.IsNullOrWhiteSpace(requestData.Status))
+            if (!string.IsNullOrWhiteSpace(employeeData.Status))
             {
-                employee.Status = requestData.Status;
+                employee.Status = employeeData.Status;
             }
 
-            if (requestData.TotalYearlyAllocatedleave < 0)
+            if (employeeData.TotalYearlyAllocatedleave < 0)
             {
-                employee.TotalYearlyAllocatedleave = requestData.TotalYearlyAllocatedleave;
+                employee.TotalYearlyAllocatedleave = employeeData.TotalYearlyAllocatedleave;
             }
-            employee.MobileNo = requestData.MobileNo;
 
-            if (!string.IsNullOrWhiteSpace(requestData.Leave))
+            if (employeeData.MobileNo < 0)
             {
-                employee.Leave = requestData.Leave;
+                employee.MobileNo = employeeData.MobileNo;
             }
-            employee.JoiningDate= requestData.JoiningDate;
-            employee.DeparturedDate= requestData.DeparturedDate;
 
-            if (requestData.WorkHour > 0)
+            if (!string.IsNullOrWhiteSpace(employeeData.Leave))
+            {
+                employee.Leave = employeeData.Leave;
+            }
+            employee.JoiningDate= employeeData.JoiningDate;
+            employee.DeparturedDate= employeeData.DeparturedDate;
+
+            if (employeeData.WorkHour > 0)
             { 
-                employee.WorkHour = requestData.WorkHour;
+                employee.WorkHour = employeeData.WorkHour;
             }
 
             _unitOfWork.EmployeeRepository.Update(employee);
