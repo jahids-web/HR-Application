@@ -12,10 +12,7 @@ namespace DLL.EntityModel
         public int Id { get; set; }
 
         [Required]
-        [Column(TypeName = "nvarchar(10)")]
         public int DepartmentId { get; set; }
-
-        [Column(TypeName = "nvarchar(50)")]
         public string DepartmentName { get; set; }
 
         public ICollection<Employee> Employees { get; set; }//one department many employees one-many
