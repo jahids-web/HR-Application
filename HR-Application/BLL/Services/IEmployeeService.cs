@@ -48,13 +48,21 @@ namespace BLL.Services
             aEmployee.WorkHour = request.WorkHour;
             aEmployee.Department = department;
             aEmployee.DepartmentId = department.DepartmentId;
-            await _unitOfWork.EmployeeRepository.CreateAsync(aEmployee);
-
-            if(await _unitOfWork.SaveChangesAsync())
+           
+            try
             {
-                return aEmployee;
+                await _unitOfWork.EmployeeRepository.CreateAsync(aEmployee);
+                if (await _unitOfWork.SaveChangesAsync())
+                {
+                    return aEmployee;
+                }
             }
-            throw new ApplicationValidationException("Employe Insert Has Some Problem");
+            catch (Exception e)
+            {
+                throw new ApplicationValidationException("Employe Insert Has Some Problem" + e );
+            }
+            return aEmployee;
+
         }
         
         public async Task<Employee> GetAAsync(string employeeId)
