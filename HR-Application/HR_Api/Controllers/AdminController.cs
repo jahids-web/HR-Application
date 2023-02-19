@@ -18,7 +18,8 @@ namespace HR_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Insert(EmployeeViewModel request)
         {
-            return Ok(await _employeeService.InsertAsync(request));
+            var result = await _employeeService.InsertAsync(request);
+            return Ok(result);
         }
 
         [HttpGet]
