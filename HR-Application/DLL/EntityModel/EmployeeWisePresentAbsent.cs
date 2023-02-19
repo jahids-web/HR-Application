@@ -16,23 +16,13 @@ namespace DLL.EntityModel
         public int Id { get; set; }
 
         [Required]
-        [Column(TypeName = "nvarchar(10)")]
         public string EmployeeWisePresentAbsentId { get; set; }
-
-        [Column(TypeName = "nvarchar(20)")]
         public string Name { get; set; }
-
-        [Column(TypeName = "nvarchar(20)")]
         public DateTime Date { get; set; }
-
-        [Column(TypeName = "nvarchar(20)")]
         public int IsPresent { get; set; }
-
-        [Column(TypeName = "nvarchar(20)")]
         public int DepartureTime { get; set; }
        
         public string EmployeeId { get; set; }
-   
         public Employee Employee { get; set; }// one to one 
     }
 }
