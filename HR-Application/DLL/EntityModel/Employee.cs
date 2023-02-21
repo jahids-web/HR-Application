@@ -11,7 +11,6 @@ namespace DLL.EntityModel
         public int Id { get; set; }
 
         [Required]
-
         public string EmployeeId { get; set; }
 
         //Department-Table
