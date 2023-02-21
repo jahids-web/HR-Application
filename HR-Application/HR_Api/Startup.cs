@@ -25,7 +25,10 @@ namespace HR_Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers().AddFluentValidation().AddNewtonsoftJson();
+            services.AddControllers().AddFluentValidation().AddNewtonsoftJson(x => x.SerializerSettings.
+            ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            //services.AddControllers().AddFluentValidation().AddNewtonsoftJson();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HR_Api", Version = "v1" });
