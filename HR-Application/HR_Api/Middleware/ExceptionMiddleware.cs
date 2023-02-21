@@ -42,10 +42,10 @@ namespace HR_Api.Middleware
 
         public async Task HandleExtensionAsync(HttpContext context, Exception exception, IWebHostEnvironment env)
         {
-            var employeeId = HttpStatusCode.InternalServerError;
+            var employee = HttpStatusCode.InternalServerError;
             var errors = new ApiErrorResponse()
             {
-                StatusCode = (int)employeeId
+                StatusCode = (int)employee
             };
 
             if (_env.IsDevelopment())
