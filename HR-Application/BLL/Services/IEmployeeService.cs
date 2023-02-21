@@ -48,7 +48,7 @@ namespace BLL.Services
             aEmployee.WorkHour = request.WorkHour;
             aEmployee.Department = department;
             aEmployee.DepartmentId = department.DepartmentId;
-           
+
             try
             {
                 await _unitOfWork.EmployeeRepository.CreateAsync(aEmployee);
@@ -59,7 +59,7 @@ namespace BLL.Services
             }
             catch (Exception e)
             {
-                throw new ApplicationValidationException("Employe Insert Has Some Problem" + e );
+                throw new ApplicationValidationException("Employe Insert Has Some Problem" + e);
             }
             return aEmployee;
 

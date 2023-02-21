@@ -37,24 +37,24 @@ namespace BLL.Services
             var employee =
               await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.EmployeeId == request.EmployeeId);
 
-            EmployeeSalary requestData = new EmployeeSalary();
-            requestData.EmployeeSalaryId = request.EmployeeSalaryId;
-            requestData.IsProvided = request.IsProvided;
-            requestData.Month = request.Month;
-            requestData.PostedAt = request.PostedAt;
-            requestData.PostedBy = request.PostedBy;
-            requestData.Name = request.Name;
-            requestData.Year = request.Year;
-            requestData.DepartmentName = request.DepartmentName;
-            requestData.EmployeeId = request.EmployeeId;
-            requestData.Department = department;
-            requestData.Employee = employee;
+            EmployeeSalary salaryData = new EmployeeSalary();
+            salaryData.EmployeeSalaryId = request.EmployeeSalaryId;
+            salaryData.IsProvided = request.IsProvided;
+            salaryData.Month = request.Month;
+            salaryData.PostedAt = request.PostedAt;
+            salaryData.PostedBy = request.PostedBy;
+            salaryData.Name = request.Name;
+            salaryData.Year = request.Year;
+            salaryData.DepartmentName = request.DepartmentName;
+            salaryData.EmployeeId = request.EmployeeId;
+            salaryData.Department = department;
+            salaryData.Employee = employee;
 
-            await _unitOfWork.SalaryRepository.CreateAsync(requestData);
+            await _unitOfWork.SalaryRepository.CreateAsync(salaryData);
 
             if (await _unitOfWork.SaveChangesAsync())
             {
-                return requestData;
+                return salaryData;
             }
 
             throw new ApplicationValidationException("Insert Has Some Problem");
