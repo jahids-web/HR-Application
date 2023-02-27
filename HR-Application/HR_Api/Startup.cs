@@ -43,9 +43,9 @@ namespace HR_Api
                 config.AssumeDefaultVersionWhenUnspecified = true;
             });
 
+            ////DllDependency.AllDependency(services, Configuration);
             //DllDependency.AllDependency(services, Configuration);
-            DllDependency.AllDependency(services, Configuration);
-            BLLDependency.AllDependency(services, Configuration);
+            //BLLDependency.AllDependency(services, Configuration);
 
         }
 
