@@ -24,6 +24,7 @@ namespace BLL.ViewModel
         public DateTime DeparturedDate { get; set; }
         public int WorkHour { get; set; }
         public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
     }
 
     public class EmployeeViewModelValidator : AbstractValidator<EmployeeViewModel>
@@ -33,6 +34,7 @@ namespace BLL.ViewModel
           
             RuleFor(x => x.EmployeeId).NotNull().NotEmpty();
             RuleFor(x => x.DepartmentId).NotNull().NotEmpty();
+            RuleFor(x => x.DepartmentName).NotNull().NotEmpty();
             RuleFor(x => x.Name).NotNull().NotEmpty();
             RuleFor(x => x.Email).NotNull().NotEmpty();
             RuleFor(x => x.Designation).NotNull().NotEmpty();
