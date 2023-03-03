@@ -48,6 +48,7 @@ namespace BLL.Services
             aEmployee.WorkHour = request.WorkHour;
             aEmployee.Department = department;
             aEmployee.DepartmentId = department.DepartmentId;
+            aEmployee.DepartmentName = department.DepartmentName;
 
             try
             {
@@ -106,6 +107,12 @@ namespace BLL.Services
             {
                 employee.Designation = employeeData.Designation;
             }
+
+            if (!string.IsNullOrWhiteSpace(employeeData.DepartmentName))
+            {
+                employee.DepartmentName = employeeData.DepartmentName;
+            }
+
             if (!string.IsNullOrWhiteSpace(employeeData.Role))
             {
                 employee.Role = employeeData.Role;
