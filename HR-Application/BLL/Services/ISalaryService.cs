@@ -50,14 +50,21 @@ namespace BLL.Services
             salaryData.Department = department;
             salaryData.Employee = employee;
 
-            await _unitOfWork.SalaryRepository.CreateAsync(salaryData);
-
-            if (await _unitOfWork.SaveChangesAsync())
+            try
             {
-                return salaryData;
-            }
+                await _unitOfWork.SalaryRepository.CreateAsync(salaryData);
 
-            throw new ApplicationValidationException("Insert Has Some Problem");
+                if (await _unitOfWork.SaveChangesAsync())
+                {
+                    return salaryData;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationValidationException("Insert Has Some Problem");
+            }
+            return salaryData;
+
         }
 
         public async Task<EmployeeSalary> GetAAsync(string employeeSalaryId)
