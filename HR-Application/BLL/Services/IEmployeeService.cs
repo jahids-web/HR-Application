@@ -23,10 +23,10 @@ namespace BLL.Services
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public EmployeeService(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
+        //public EmployeeService(IUnitOfWork unitOfWork)
+        //{
+        //    _unitOfWork = unitOfWork;
+        //}
         public async Task<Employee> InsertAsync(EmployeeViewModel request)
         {
             var department =
