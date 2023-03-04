@@ -26,8 +26,8 @@ namespace BLL.Services
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public SalaryService(IUnitOfWork unitOfWork) 
-        { 
+        public SalaryService(IUnitOfWork unitOfWork)
+        {
             _unitOfWork = unitOfWork;
         }
         public async Task<EmployeeSalary> InsertAsync(SalaryViewModel request)
