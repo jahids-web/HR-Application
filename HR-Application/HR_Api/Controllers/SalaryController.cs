@@ -19,7 +19,8 @@ namespace HR_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Insert(SalaryViewModel request)
         {
-            return Ok(await _salaryService.InsertAsync(request));
+            var result = await _salaryService.InsertAsync(request);
+            return Ok(result);
         }
 
         [HttpGet("employeSalaryId")]
