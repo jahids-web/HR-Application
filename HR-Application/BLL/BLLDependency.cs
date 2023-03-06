@@ -12,6 +12,7 @@ namespace BLL
         {
             services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<IDepartmentService, DepartmentService>();
+            services.AddTransient<ISalaryService, SalaryService>();
 
             AllFluentValidationDependency(services);
         }
@@ -20,6 +21,7 @@ namespace BLL
         {
             services.AddScoped<IValidator<EmployeeViewModel>, EmployeeViewModelValidator>();
             services.AddScoped<IValidator<DepartmentViewModel>, DepartmentViewModelValidator>();
+            services.AddScoped<IValidator<SalaryViewModel>, SalaryViewModelValidator>();
         }
     }
 }
