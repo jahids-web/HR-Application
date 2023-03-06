@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    public class ILeaveApplicationService
+    public interface ILeaveApplicationService
     {
     }
+
+    public class LeaveApplicationService : ILeaveApplicationService
+    {
+                
+    }   
 }
