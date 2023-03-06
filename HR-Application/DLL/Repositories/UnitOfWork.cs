@@ -18,6 +18,7 @@ namespace DLL.Repositories
         private IEmployeeRepository _employeeRepository;
         private IDepartmentRepository _departmentRepository;
         private ISalaryRepository _salaryRepository;
+        private ILeaveApplicationRepository _leaveRepository;
         
         public IEmployeeRepository EmployeeRepository =>
             _employeeRepository ?? new EmployeeRepository(_context);
@@ -27,6 +28,9 @@ namespace DLL.Repositories
 
         public ISalaryRepository SalaryRepository =>
         _salaryRepository ?? new SalaryRepository(_context);
+
+        public ILeaveApplicationRepository LeaveApplicationRepository =>
+            _leaveRepository ?? new LeaveApplicationRepository(_context);
 
         protected virtual void Dispose(bool disposing)
         {
