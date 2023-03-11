@@ -8,6 +8,7 @@ namespace DLL.Repositories
         IDepartmentRepository DepartmentRepository { get; }
         ISalaryRepository SalaryRepository { get; }
         ILeaveApplicationRepository LeaveApplicationRepository { get; }
+        IEmployeeWisePresentAbsentRepository EmployeeWisePresentAbsentRepository { get; }
         Task<bool> SaveChangesAsync();
         
     }
