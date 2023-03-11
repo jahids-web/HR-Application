@@ -28,13 +28,13 @@ namespace HR_Api.Controllers
             return Ok(await _leaveApplicationService.GetAllAsync());
         }
 
-        [HttpGet("leaveApplicationId")]
+        [HttpGet("{leaveApplicationId}")]
         public async Task<IActionResult> GatA(string leaveApplicationId)
         {
             return Ok(await _leaveApplicationService.GetAAsync(leaveApplicationId));
         }
 
-        [HttpPut("leaveApplicationId")]
+        [HttpPut("{leaveApplicationId}")]
         public async Task<IActionResult> Update(string leaveApplicationId, LeaveApplicationViewModel leaveRequest)
         {
             return Ok(await _leaveApplicationService.UpdateAsync(leaveApplicationId, leaveRequest));
