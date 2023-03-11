@@ -14,6 +14,8 @@ namespace BLL
             services.AddTransient<IDepartmentService, DepartmentService>();
             services.AddTransient<ISalaryService, SalaryService>();
             services.AddTransient<ILeaveApplicationService, LeaveApplicationService>();
+            services.AddTransient<ILeaveApplicationService, LeaveApplicationService>();
+            services.AddTransient<IEmployeeWisePresentAbsentService, EmployeeWisePresentAbsentService>();
 
             AllFluentValidationDependency(services);
         }
@@ -24,6 +26,7 @@ namespace BLL
             services.AddScoped<IValidator<DepartmentViewModel>, DepartmentViewModelValidator>();
             services.AddScoped<IValidator<SalaryViewModel>, SalaryViewModelValidator>();
             services.AddScoped<IValidator<LeaveApplicationViewModel>, LeaveApplicationViewModelValidator>();
+            services.AddScoped<IValidator<EmployeeWisePresentAbsentViewModel>, EmployeeWisePresentAbsentViewModelValidator>();
         }
     }
 }
