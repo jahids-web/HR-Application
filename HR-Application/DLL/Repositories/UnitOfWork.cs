@@ -19,6 +19,7 @@ namespace DLL.Repositories
         private IDepartmentRepository _departmentRepository;
         private ISalaryRepository _salaryRepository;
         private ILeaveApplicationRepository _leaveRepository;
+        private IEmployeeWisePresentAbsentRepository _employeeWisePresentAbsentRepository;
         
         public IEmployeeRepository EmployeeRepository =>
             _employeeRepository ?? new EmployeeRepository(_context);
@@ -32,6 +33,9 @@ namespace DLL.Repositories
         public ILeaveApplicationRepository LeaveApplicationRepository =>
             _leaveRepository ?? new LeaveApplicationRepository(_context);
 
+        public IEmployeeWisePresentAbsentRepository EmployeeWisePresentAbsentRepository =>
+           _employeeWisePresentAbsentRepository ?? new EmployeeWisePresentAbsentRepository(_context);
+
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
@@ -44,6 +48,7 @@ namespace DLL.Repositories
 
             this.disposed = true;
         }
+
         public void Dispose()
         {
             Dispose(true);
@@ -55,6 +60,5 @@ namespace DLL.Repositories
             return await _context.SaveChangesAsync() > 0;
         }
 
-     
     }
 }
