@@ -14,7 +14,7 @@ namespace DLL.EntityModel
         [Key] 
         public int Id { get; set; }
 
-        //[Required]
+        [Required]
         public string LeaveApplicationId { get; set; }
         public string Name { get; set; }
         public string DepartmentName { get; set; }
