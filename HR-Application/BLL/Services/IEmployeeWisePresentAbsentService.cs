@@ -33,29 +33,29 @@ namespace BLL.Services
             var employee =
             await _unitOfWork.EmployeeRepository.FindSingLeAsync(x => x.EmployeeId == request.EmployeeId);
 
-            EmployeeWisePresentAbsent data = new EmployeeWisePresentAbsent();
-            data.EmployeeWisePresentAbsentId = request.EmployeeWisePresentAbsentId;
-            data.Name = request.Name;
-            data.EmployeeId = request.EmployeeId;
-            data.Date = request.Date;
-            data.IsPresent = request.IsPresent;
-            data.DepartureTime = request.DepartureTime;
-            data.EmployeeId = employee;
+            EmployeeWisePresentAbsent insertData = new EmployeeWisePresentAbsent();
+            insertData.EmployeeWisePresentAbsentId = request.EmployeeWisePresentAbsentId;
+            insertData.Name = request.Name;
+            insertData.EmployeeId = request.EmployeeId;
+            insertData.Date = request.Date;
+            insertData.IsPresent = request.IsPresent;
+            insertData.DepartureTime = request.DepartureTime;
+            insertData.EmployeeId = employee;
 
             try
             {
-                await _unitOfWork.EmployeeWisePresentAbsentRepository.CreateAsync(data);
+                await _unitOfWork.EmployeeWisePresentAbsentRepository.CreateAsync(insertData);
 
                 if(await _unitOfWork.SaveChangesAsync())
                 {
-                    return data;
+                    return insertData;
                 }
             }
             catch (Exception ex) 
             {
                 throw new ApplicationValidationException("Insert Has Some Problem");
             }
-            return data;
+            return insertData;
 
         }
 
