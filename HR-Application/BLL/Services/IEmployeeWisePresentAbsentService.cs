@@ -40,7 +40,7 @@ namespace BLL.Services
             insertData.Date = request.Date;
             insertData.IsPresent = request.IsPresent;
             insertData.DepartureTime = request.DepartureTime;
-            insertData.EmployeeId = employee;
+            //insertData.EmployeeId = employee;
 
             try
             {
