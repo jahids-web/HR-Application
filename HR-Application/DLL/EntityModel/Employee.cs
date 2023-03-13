@@ -43,9 +43,6 @@ namespace DLL.EntityModel
   
         public Department Department { get; set; }
 
-        public static implicit operator string(Employee v)
-        {
-            throw new NotImplementedException();
-        }
+     
     }
 }
