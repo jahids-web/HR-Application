@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DLL.Migrations
 {
-    public partial class HRMigration : Migration
+    public partial class ApiMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +13,8 @@ namespace DLL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DepartmentId = table.Column<string>(type: "nvarchar(10)", nullable: false),
-                    DepartmentName = table.Column<string>(type: "nvarchar(50)", nullable: true)
+                    DepartmentId = table.Column<int>(type: "int", nullable: false),
+                    DepartmentName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -26,20 +27,20 @@ namespace DLL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeId = table.Column<string>(type: "nvarchar(10)", nullable: false),
-                    DepartmentName = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    Role = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    Designation = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    Status = table.Column<string>(type: "nvarchar(5)", nullable: true),
-                    TotalYearlyAllocatedleave = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    MobileNo = table.Column<string>(type: "nvarchar(12)", nullable: false),
-                    Leave = table.Column<string>(type: "nvarchar(15)", nullable: true),
-                    IsEmployed = table.Column<string>(type: "nvarchar(10)", nullable: true),
-                    JoiningDate = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    DeparturedDate = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    WorkHour = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DepartmentName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Designation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TotalYearlyAllocatedleave = table.Column<int>(type: "int", nullable: false),
+                    MobileNo = table.Column<int>(type: "int", nullable: false),
+                    Leave = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsEmployed = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    JoiningDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeparturedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    WorkHour = table.Column<int>(type: "int", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -59,15 +60,16 @@ namespace DLL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeSalaryId = table.Column<string>(type: "nvarchar(10)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    DepartmentName = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    Month = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    Year = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    PostedAt = table.Column<string>(type: "nvarchar(12)", nullable: true),
-                    PostedBy = table.Column<string>(type: "nvarchar(12)", nullable: true),
-                    IsProvided = table.Column<string>(type: "nvarchar(12)", nullable: true),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    EmployeeSalaryId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DepartmentName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Month = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Year = table.Column<int>(type: "int", nullable: false),
+                    PostedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsProvided = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeeId1 = table.Column<int>(type: "int", nullable: true),
                     DepartmentId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -80,11 +82,11 @@ namespace DLL.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_EmployeeSalarys_Employees_EmployeeId",
-                        column: x => x.EmployeeId,
+                        name: "FK_EmployeeSalarys_Employees_EmployeeId1",
+                        column: x => x.EmployeeId1,
                         principalTable: "Employees",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,22 +95,23 @@ namespace DLL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeWisePresentAbsentId = table.Column<string>(type: "nvarchar(10)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    Date = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    IsPresent = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    DepartureTime = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                    EmployeeWisePresentAbsentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsPresent = table.Column<int>(type: "int", nullable: false),
+                    DepartureTime = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeeId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EmployeeWisePresentAbsents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EmployeeWisePresentAbsents_Employees_EmployeeId",
-                        column: x => x.EmployeeId,
+                        name: "FK_EmployeeWisePresentAbsents_Employees_EmployeeId1",
+                        column: x => x.EmployeeId1,
                         principalTable: "Employees",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -117,19 +120,20 @@ namespace DLL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LeaveApplicationId = table.Column<string>(type: "nvarchar(10)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    DepartmentName = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    Subject = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    Body = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    Status = table.Column<string>(type: "nvarchar(12)", nullable: true),
-                    From = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    To = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    ApprovalDate = table.Column<string>(type: "nvarchar(12)", nullable: false),
-                    ApplicationDate = table.Column<string>(type: "nvarchar(12)", nullable: false),
-                    LastUpdatedAt = table.Column<string>(type: "nvarchar(12)", nullable: true),
+                    LeaveApplicationId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DepartmentName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Body = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    From = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    To = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ApprovalDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ApplicationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastUpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DepartmentId = table.Column<int>(type: "int", nullable: true),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeeId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -141,11 +145,11 @@ namespace DLL.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_LeaveApplications_Employees_EmployeeId",
-                        column: x => x.EmployeeId,
+                        name: "FK_LeaveApplications_Employees_EmployeeId1",
+                        column: x => x.EmployeeId1,
                         principalTable: "Employees",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -159,14 +163,14 @@ namespace DLL.Migrations
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeSalarys_EmployeeId",
+                name: "IX_EmployeeSalarys_EmployeeId1",
                 table: "EmployeeSalarys",
-                column: "EmployeeId");
+                column: "EmployeeId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeWisePresentAbsents_EmployeeId",
+                name: "IX_EmployeeWisePresentAbsents_EmployeeId1",
                 table: "EmployeeWisePresentAbsents",
-                column: "EmployeeId");
+                column: "EmployeeId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaveApplications_DepartmentId",
@@ -174,9 +178,9 @@ namespace DLL.Migrations
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LeaveApplications_EmployeeId",
+                name: "IX_LeaveApplications_EmployeeId1",
                 table: "LeaveApplications",
-                column: "EmployeeId");
+                column: "EmployeeId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

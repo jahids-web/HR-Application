@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DLL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230221152118_ApiMigration")]
+    [Migration("20230419184502_ApiMigration")]
     partial class ApiMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
