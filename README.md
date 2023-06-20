@@ -65,4 +65,12 @@ Fluent API
 **Architecture:** Layered Architecture - n-Tier Architecture -
 (Business Logic & Data Access Layer)
 
-
+## Features
+- Create employee
+- View employees info
+- Provide salary
+- Approve Leave
+- Delete Employee
+- Leave apply
+- View employee Present/leave report
+- Present /Leave report
