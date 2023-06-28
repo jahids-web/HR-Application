@@ -103,41 +103,49 @@ namespace BLL.Services
                 employee.Email = employeeData.Email;
             }
 
-            if (!string.IsNullOrWhiteSpace(employeeData.Designation))
-            {
-                employee.Designation = employeeData.Designation;
-            }
+            //if (!string.IsNullOrWhiteSpace(employeeData.Designation))
+            //{
+               
+            //}
 
-            if (!string.IsNullOrWhiteSpace(employeeData.DepartmentName))
-            {
-                employee.DepartmentName = employeeData.DepartmentName;
-            }
+            //if (!string.IsNullOrWhiteSpace(employeeData.DepartmentName))
+            //{
+               
+            //}
 
-            if (!string.IsNullOrWhiteSpace(employeeData.Role))
-            {
-                employee.Role = employeeData.Role;
-            }
-            if (!string.IsNullOrWhiteSpace(employeeData.Status))
-            {
-                employee.Status = employeeData.Status;
-            }
+            //if (!string.IsNullOrWhiteSpace(employeeData.Role))
+            //{
+                
+            //}
+            //if (!string.IsNullOrWhiteSpace(employeeData.Status))
+            //{
+               
+            //}
 
-            if (employeeData.TotalYearlyAllocatedleave < 0)
-            {
-                employee.TotalYearlyAllocatedleave = employeeData.TotalYearlyAllocatedleave;
-            }
+            //if (employeeData.TotalYearlyAllocatedleave < 0)
+            //{
 
-            if (employeeData.MobileNo < 0)
-            {
-                employee.MobileNo = employeeData.MobileNo;
-            }
+            //}
 
-            if (!string.IsNullOrWhiteSpace(employeeData.Leave))
-            {
-                employee.Leave = employeeData.Leave;
-            }
-            employee.JoiningDate= employeeData.JoiningDate;
-            employee.DeparturedDate= employeeData.DeparturedDate;
+            //if (employeeData.MobileNo < 0)
+            //{
+
+            //}
+
+            //if (!string.IsNullOrWhiteSpace(employeeData.Leave))
+            //{
+
+            //}
+
+            employee.DepartmentName = employeeData.DepartmentName;
+            employee.Designation = employeeData.Designation;
+            employee.Role = employeeData.Role;
+            employee.Status = employeeData.Status;
+            employee.TotalYearlyAllocatedleave = employeeData.TotalYearlyAllocatedleave;
+            employee.MobileNo = employeeData.MobileNo;
+            employee.Leave = employeeData.Leave;
+            employee.JoiningDate = employeeData.JoiningDate;
+            employee.DeparturedDate = employeeData.DeparturedDate;
 
             if (employeeData.WorkHour > 0)
             { 
