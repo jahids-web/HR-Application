@@ -13,7 +13,7 @@ The HR web application Api is a comprehensive solution designed to simplify and 
 
 Firstly, clone the project-
 ```
-[https://github.com/jahids-web/HR-Application]
+https://github.com/jahids-web/HR-Application
 ```
 Secondly, Open the project in Visual Studio by running the `HR-Application.sln` solution file - 
 ```
