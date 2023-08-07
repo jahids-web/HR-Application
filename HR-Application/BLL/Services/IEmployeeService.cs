@@ -103,40 +103,6 @@ namespace BLL.Services
                 employee.Email = employeeData.Email;
             }
 
-            //if (!string.IsNullOrWhiteSpace(employeeData.Designation))
-            //{
-               
-            //}
-
-            //if (!string.IsNullOrWhiteSpace(employeeData.DepartmentName))
-            //{
-               
-            //}
-
-            //if (!string.IsNullOrWhiteSpace(employeeData.Role))
-            //{
-                
-            //}
-            //if (!string.IsNullOrWhiteSpace(employeeData.Status))
-            //{
-               
-            //}
-
-            //if (employeeData.TotalYearlyAllocatedleave < 0)
-            //{
-
-            //}
-
-            //if (employeeData.MobileNo < 0)
-            //{
-
-            //}
-
-            //if (!string.IsNullOrWhiteSpace(employeeData.Leave))
-            //{
-
-            //}
-
             employee.DepartmentName = employeeData.DepartmentName;
             employee.Designation = employeeData.Designation;
             employee.Role = employeeData.Role;
